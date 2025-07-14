@@ -1,6 +1,6 @@
-import 'package:e_commerce_app_base/config/assets/assets.dart';
+import 'package:e_commerce_app_base/config/assets/palmyra_assets.dart';
 
-class EcommerceAssets extends Assets {
+class EcommerceAssets extends PalmyraAssets {
   @override
   String get assets => 'assets/ecommerce';
 

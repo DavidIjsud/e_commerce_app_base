@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 abstract class PalmyrasoftTypography {
+  const PalmyrasoftTypography();
+
   // Headings 1
   TextStyle get heading1Bold;
   TextStyle get heading1Semibold;
