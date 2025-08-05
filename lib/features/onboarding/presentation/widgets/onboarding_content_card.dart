@@ -106,24 +106,27 @@ class OnboardingContentCard extends StatelessWidget {
               BlocBuilder<OnboardingBloc, OnboardingState>(
                 builder: (context, state) {
                   if (state.isActive || state.isLoading) {
-                    return Row(
-                      children: [
-                        Text(
-                          state.isLastPage ? 'Get Started' : 'Next',
-                          style: typography.bodyMediumMedium.copyWith(
-                            color: Colors.white,
-                            fontSize: 16,
+                    return GestureDetector(
+                      onTap: onNext,
+                      child: Row(
+                        children: [
+                          Text(
+                            state.isLastPage ? 'Get Started' : 'Next',
+                            style: typography.bodyMediumMedium.copyWith(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        if (!state.isLastPage) ...[
-                          const SizedBox(width: 8),
-                          const Icon(
-                            Icons.arrow_forward,
-                            color: Colors.white,
-                            size: 20,
-                          ),
+                          if (!state.isLastPage) ...[
+                            const SizedBox(width: 8),
+                            const Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     );
                   }
                   return const SizedBox.shrink();
