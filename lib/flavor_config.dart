@@ -5,8 +5,14 @@ import 'package:e_commerce_app_base/themes/palmyrasoft_theme.dart';
 
 abstract class FlavorConfig {
   static Config initConfig() {
-    final flavor = _resolveFlavor(String.fromEnvironment('FLAVOR', defaultValue: 'ecommerceDevelopment'));
-    return Config(theme: _resolveTheme(flavor), assets: _resolveAssets(flavor), flavor: flavor);
+    final flavor = _resolveFlavor(
+      String.fromEnvironment('FLAVOR', defaultValue: 'ecommerceDevelopment'),
+    );
+    return Config(
+      theme: _resolveTheme(flavor),
+      assets: _resolveAssets(flavor),
+      flavor: flavor,
+    );
   }
 
   static PalmyraSoftTheme _resolveTheme(Flavor flavor) {
