@@ -50,4 +50,37 @@ class AppLocalizationsEs extends AppLocalizations {
   String onboarding_version_sdk(Object sdkversion) {
     return 'SDK: $sdkversion';
   }
+
+  @override
+  String get login_title => 'Inicia sesión en tu cuenta';
+
+  @override
+  String get login_subtitle => 'Por favor inicia sesión en tu cuenta';
+
+  @override
+  String get login_email_label => 'Correo electrónico';
+
+  @override
+  String get login_email_placeholder => 'Ingresa tu correo';
+
+  @override
+  String get login_password_label => 'Contraseña';
+
+  @override
+  String get login_password_placeholder => 'Contraseña';
+
+  @override
+  String get login_forgot_password => '¿Olvidaste tu contraseña?';
+
+  @override
+  String get login_sign_in_button => 'Iniciar Sesión';
+
+  @override
+  String get login_or_separator => 'O inicia sesión con';
+
+  @override
+  String get login_register_text => '¿No tienes una cuenta?';
+
+  @override
+  String get login_register_link => 'Regístrate';
 }

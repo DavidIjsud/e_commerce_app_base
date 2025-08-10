@@ -13,4 +13,9 @@ class PalmyraAssets {
   String get onboarding3 => '$onboarding/onboarding_three.png';
 
   //ICONS
+
+  // Social Login Icons
+  String get googleIcon => '$svgs/google_icon.svg';
+  String get facebookIcon => '$svgs/facebook_icon.svg';
+  String get appleIcon => '$svgs/apple_icon.svg';
 }

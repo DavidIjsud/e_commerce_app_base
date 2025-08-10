@@ -15,5 +15,18 @@
   "onboarding_page_three_title": "Best offers on your favorites",
   "onboarding_page_three_description": "We are not selling out. The prices in our app are the same as in the restaurants.",
   "onboarding_version_app": "Version: {version}",
-  "onboarding_version_sdk": "SDK: {sdkversion}"
+  "onboarding_version_sdk": "SDK: {sdkversion}",
+
+  "@_LOGIN": {},
+  "login_title": "Login to your account",
+  "login_subtitle": "Please sign in to your account",
+  "login_email_label": "Email Address",
+  "login_email_placeholder": "Enter Email",
+  "login_password_label": "Password",
+  "login_password_placeholder": "Password",
+  "login_forgot_password": "Forgot password?",
+  "login_sign_in_button": "Sign In",
+  "login_or_separator": "Or sign in with",
+  "login_register_text": "Don't have an account?",
+  "login_register_link": "Register"
 }

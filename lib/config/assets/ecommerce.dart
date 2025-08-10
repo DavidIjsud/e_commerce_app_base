@@ -23,4 +23,12 @@ class EcommerceAssets extends PalmyraAssets {
 
   @override
   String get onboarding3 => '$onboarding/onboarding_three.png';
+
+  // Social Login Icons
+  @override
+  String get googleIcon => '$svgs/google_icon.svg';
+  @override
+  String get facebookIcon => '$svgs/facebook_icon.svg';
+  @override
+  String get appleIcon => '$svgs/apple_icon.svg';
 }

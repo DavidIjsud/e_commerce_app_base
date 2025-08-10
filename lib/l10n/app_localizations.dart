@@ -169,6 +169,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'SDK: {sdkversion}'**
   String onboarding_version_sdk(Object sdkversion);
+
+  /// No description provided for @login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to your account'**
+  String get login_title;
+
+  /// No description provided for @login_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in to your account'**
+  String get login_subtitle;
+
+  /// No description provided for @login_email_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get login_email_label;
+
+  /// No description provided for @login_email_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email'**
+  String get login_email_placeholder;
+
+  /// No description provided for @login_password_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get login_password_label;
+
+  /// No description provided for @login_password_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get login_password_placeholder;
+
+  /// No description provided for @login_forgot_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get login_forgot_password;
+
+  /// No description provided for @login_sign_in_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get login_sign_in_button;
+
+  /// No description provided for @login_or_separator.
+  ///
+  /// In en, this message translates to:
+  /// **'Or sign in with'**
+  String get login_or_separator;
+
+  /// No description provided for @login_register_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get login_register_text;
+
+  /// No description provided for @login_register_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get login_register_link;
 }
 
 class _AppLocalizationsDelegate

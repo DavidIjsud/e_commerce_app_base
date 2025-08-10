@@ -50,4 +50,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String onboarding_version_sdk(Object sdkversion) {
     return 'SDK: $sdkversion';
   }
+
+  @override
+  String get login_title => 'Login to your account';
+
+  @override
+  String get login_subtitle => 'Please sign in to your account';
+
+  @override
+  String get login_email_label => 'Email Address';
+
+  @override
+  String get login_email_placeholder => 'Enter Email';
+
+  @override
+  String get login_password_label => 'Password';
+
+  @override
+  String get login_password_placeholder => 'Password';
+
+  @override
+  String get login_forgot_password => 'Forgot password?';
+
+  @override
+  String get login_sign_in_button => 'Sign In';
+
+  @override
+  String get login_or_separator => 'Or sign in with';
+
+  @override
+  String get login_register_text => 'Don\'t have an account?';
+
+  @override
+  String get login_register_link => 'Register';
 }

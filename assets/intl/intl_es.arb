@@ -15,5 +15,18 @@
   "onboarding_page_three_title": "Mejores ofertas en tus favoritos",
   "onboarding_page_three_description": "No estamos vendiendo. Los precios en nuestra aplicación son los mismos que en los restaurantes.",
   "onboarding_version_app": "Versión: {version}",
-  "onboarding_version_sdk": "SDK: {sdkversion}"
+  "onboarding_version_sdk": "SDK: {sdkversion}",
+
+  "@_LOGIN": {},
+  "login_title": "Inicia sesión en tu cuenta",
+  "login_subtitle": "Por favor inicia sesión en tu cuenta",
+  "login_email_label": "Correo electrónico",
+  "login_email_placeholder": "Ingresa tu correo",
+  "login_password_label": "Contraseña",
+  "login_password_placeholder": "Contraseña",
+  "login_forgot_password": "¿Olvidaste tu contraseña?",
+  "login_sign_in_button": "Iniciar Sesión",
+  "login_or_separator": "O inicia sesión con",
+  "login_register_text": "¿No tienes una cuenta?",
+  "login_register_link": "Regístrate"
 }
