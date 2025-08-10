@@ -47,10 +47,10 @@ class SocialLoginButtons extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 config.assets.googleIcon,
-                width: 24,
-                height: 24,
+                width: 48,
+                height: 48,
                 placeholderBuilder: (context) =>
-                    const Icon(Icons.g_mobiledata, size: 24),
+                    const Icon(Icons.g_mobiledata, size: 48),
               ),
             ),
             SocialButton(
@@ -59,10 +59,10 @@ class SocialLoginButtons extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 config.assets.facebookIcon,
-                width: 24,
-                height: 24,
+                width: 48,
+                height: 48,
                 placeholderBuilder: (context) =>
-                    const Icon(Icons.facebook, size: 24),
+                    const Icon(Icons.facebook, size: 48),
               ),
             ),
             SocialButton(
@@ -71,10 +71,10 @@ class SocialLoginButtons extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 config.assets.appleIcon,
-                width: 24,
-                height: 24,
+                width: 48,
+                height: 48,
                 placeholderBuilder: (context) =>
-                    const Icon(Icons.apple, size: 24),
+                    const Icon(Icons.apple, size: 48),
               ),
             ),
           ],
