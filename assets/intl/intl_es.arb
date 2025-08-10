@@ -1,0 +1,19 @@
+{
+  "@@Locale": "es",
+
+  "@_APP": {},
+  "app_name": "Aplicación de E-Commerce",
+
+  "@_ONBOARDING": {},
+  "onboarding_skip_button": "Saltar",
+  "onboarding_next_button": "Siguiente",
+  "onboarding_get_started_button": "Comenzar",
+  "onboarding_page_one_title": "Servimos delicias incomparables",
+  "onboarding_page_one_description": "Todos los mejores restaurantes con su menú principal esperando por ti, no pueden esperar a que se haga tu pedido.",
+  "onboarding_page_two_title": "Entrega más rápida a tu casa",
+  "onboarding_page_two_description": "Nos aseguramos de que ordenar tu comida sea lo más cómodo y divertido. No debería ser difícil ordenar comida.",
+  "onboarding_page_three_title": "Mejores ofertas en tus favoritos",
+  "onboarding_page_three_description": "No estamos vendiendo. Los precios en nuestra aplicación son los mismos que en los restaurantes.",
+  "onboarding_version_app": "Versión: {version}",
+  "onboarding_version_sdk": "SDK: {sdkversion}"
+}

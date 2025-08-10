@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_events.dart';
+import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_states.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/models/models.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/widgets/onboarding_content_card.dart';
+import 'package:e_commerce_app_base/features/onboarding/presentation/widgets/onboarding_background_view.dart';
 
 /// Carousel widget for onboarding screens
 class OnboardingCarousel extends StatefulWidget {
@@ -68,73 +70,44 @@ class _OnboardingCarouselState extends State<OnboardingCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        // PageView for the carousel
-        Expanded(
-          child: PageView.builder(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            itemCount: widget.pages.length,
-            itemBuilder: (context, index) {
-              final page = widget.pages[index];
-              return _OnboardingPageView(
-                page: page,
-                onSkip: _onSkip,
-                onNext: _onNext,
-              );
-            },
-          ),
+        // Background PageView (only for images)
+        PageView.builder(
+          controller: _pageController,
+          onPageChanged: _onPageChanged,
+          itemCount: widget.pages.length,
+          itemBuilder: (context, index) {
+            final page = widget.pages[index];
+            return OnboardingBackgroundView(page: page);
+          },
         ),
-      ],
-    );
-  }
-}
 
-/// Individual page view widget
-class _OnboardingPageView extends StatelessWidget {
-  final OnboardingPageData page;
-  final VoidCallback onSkip;
-  final VoidCallback onNext;
-
-  const _OnboardingPageView({
-    required this.page,
-    required this.onSkip,
-    required this.onNext,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(page.backgroundImage),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.transparent, Colors.black.withValues(alpha: 0.3)],
-          ),
-        ),
-        child: SafeArea(
+        // Static content overlay
+        SafeArea(
           child: Column(
             children: [
               const Spacer(),
-              OnboardingContentCard(
-                title: page.title,
-                description: page.description,
-                onSkip: onSkip,
-                onNext: onNext,
+              // Content card with dynamic content
+              BlocBuilder<OnboardingBloc, OnboardingState>(
+                builder: (context, state) {
+                  if (state.isActive || state.isLoading) {
+                    final currentPage = widget.pages[state.currentPageIndex];
+                    return OnboardingContentCard(
+                      title: currentPage.title,
+                      description: currentPage.description,
+                      onSkip: _onSkip,
+                      onNext: _onNext,
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
               const SizedBox(height: 40),
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

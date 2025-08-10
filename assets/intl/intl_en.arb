@@ -1,0 +1,19 @@
+{
+  "@@Locale": "en",
+
+  "@_APP": {},
+  "app_name": "E-Commerce App",
+
+  "@_ONBOARDING": {},
+  "onboarding_skip_button": "Skip",
+  "onboarding_next_button": "Next",
+  "onboarding_get_started_button": "Get Started",
+  "onboarding_page_one_title": "We serve incomparable delicacies",
+  "onboarding_page_one_description": "All the best restaurants with their top menu waiting for you, they can't wait for our order to be placed.",
+  "onboarding_page_two_title": "Fastest delivery to your home",
+  "onboarding_page_two_description": "We make sure ordering your food is the most comfortable and fun. It should not be hard to order food.",
+  "onboarding_page_three_title": "Best offers on your favorites",
+  "onboarding_page_three_description": "We are not selling out. The prices in our app are the same as in the restaurants.",
+  "onboarding_version_app": "Version: {version}",
+  "onboarding_version_sdk": "SDK: {sdkversion}"
+}

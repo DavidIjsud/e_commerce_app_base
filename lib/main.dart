@@ -3,6 +3,7 @@ import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/flavor_config.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
+import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 
 void main() {
   final config = FlavorConfig.initConfig();
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: config.theme.light(),
       home: const OnboardingPage(),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('en'), // Default to English
     );
   }
 }

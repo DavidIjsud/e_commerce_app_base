@@ -5,6 +5,7 @@ import 'package:e_commerce_app_base/features/onboarding/presentation/models/mode
 import 'package:e_commerce_app_base/features/onboarding/presentation/widgets/onboarding_carousel.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
+import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 
 /// Onboarding Page
 ///
@@ -41,25 +42,23 @@ class _OnboardingPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get the injected config
     final config = Get.injector<Config>();
+    final l10n = AppLocalizations.of(context)!;
 
-    // Sample onboarding pages using config assets
+    // Sample onboarding pages using config assets and localized strings
     final onboardingPages = [
       OnboardingPageData(
-        title: "We serve incomparable delicacies",
-        description:
-            "All the best restaurants with their top menu waiting for you, they can't wait for your order!!",
+        title: l10n.onboarding_page_one_title,
+        description: l10n.onboarding_page_one_description,
         backgroundImage: config.assets.onboarding1,
       ),
       OnboardingPageData(
-        title: "Fast & Reliable Delivery",
-        description:
-            "Get your favorite food delivered to your doorstep in minutes with our lightning-fast delivery service.",
+        title: l10n.onboarding_page_two_title,
+        description: l10n.onboarding_page_two_description,
         backgroundImage: config.assets.onboarding2,
       ),
       OnboardingPageData(
-        title: "Track Your Order",
-        description:
-            "Follow your order in real-time and know exactly when your delicious meal will arrive.",
+        title: l10n.onboarding_page_three_title,
+        description: l10n.onboarding_page_three_description,
         backgroundImage: config.assets.onboarding3,
       ),
     ];

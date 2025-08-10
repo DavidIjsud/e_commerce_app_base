@@ -4,6 +4,7 @@ import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboa
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_states.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
+import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 
 class OnboardingContentCard extends StatelessWidget {
   final String title;
@@ -25,6 +26,7 @@ class OnboardingContentCard extends StatelessWidget {
     final config = Get.injector<Config>();
     final colors = config.theme.themeColors;
     final typography = config.theme.typography;
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
@@ -94,7 +96,7 @@ class OnboardingContentCard extends StatelessWidget {
               TextButton(
                 onPressed: onSkip,
                 child: Text(
-                  'Skip',
+                  l10n.onboarding_skip_button,
                   style: typography.bodyMediumMedium.copyWith(
                     color: Colors.white,
                     fontSize: 16,
@@ -111,7 +113,9 @@ class OnboardingContentCard extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            state.isLastPage ? 'Get Started' : 'Next',
+                            state.isLastPage
+                                ? l10n.onboarding_get_started_button
+                                : l10n.onboarding_next_button,
                             style: typography.bodyMediumMedium.copyWith(
                               color: Colors.white,
                               fontSize: 16,
