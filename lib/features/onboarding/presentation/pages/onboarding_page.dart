@@ -1,3 +1,4 @@
+import 'package:e_commerce_app_base/features/login/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
@@ -67,24 +68,17 @@ class _OnboardingPageView extends StatelessWidget {
       body: OnboardingCarousel(
         pages: onboardingPages,
         onSkip: () {
-          // Navigate to main app or login screen
-          _navigateToMainApp(context);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+          );
         },
         onComplete: () {
-          // Navigate to main app or login screen
-          _navigateToMainApp(context);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+          );
         },
-      ),
-    );
-  }
-
-  void _navigateToMainApp(BuildContext context) {
-    // TODO: Navigate to main app or login screen
-    // For now, just show a snackbar
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Welcome to the app!'),
-        duration: Duration(seconds: 2),
       ),
     );
   }

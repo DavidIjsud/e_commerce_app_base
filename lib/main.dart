@@ -1,6 +1,5 @@
 import 'package:e_commerce_app_base/boostrap.dart';
 import 'package:e_commerce_app_base/config/config.dart';
-import 'package:e_commerce_app_base/features/login/presentation/pages/login_page.dart';
 import 'package:e_commerce_app_base/flavor_config.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: config.theme.light(),
-      home: const LoginPage(), //const OnboardingPage(),
+      home: const OnboardingPage(), //const LoginPage(),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('en'), // Default to English
