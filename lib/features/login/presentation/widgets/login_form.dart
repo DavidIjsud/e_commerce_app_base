@@ -6,6 +6,7 @@ import 'package:e_commerce_app_base/features/login/presentation/blocs/login_stat
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
+import 'package:e_commerce_app_base/core/widgets/widgets.dart';
 
 /// Login form widget with email and password inputs
 class LoginForm extends StatelessWidget {
@@ -165,42 +166,12 @@ class LoginForm extends StatelessWidget {
               const SizedBox(height: 20),
 
             // Sign In Button
-            SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
-                onPressed: state.isLoading
-                    ? null
-                    : () {
-                        context.read<LoginBloc>().add(LoginSubmitted());
-                      },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: colors.primaryHoverIris,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  elevation: 0,
-                ),
-                child: state.isLoading
-                    ? SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
-                          ),
-                        ),
-                      )
-                    : Text(
-                        l10n.login_sign_in_button,
-                        style: typography.bodyLargeMedium.copyWith(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-              ),
+            PrimaryButton(
+              text: l10n.login_sign_in_button,
+              onPressed: () {
+                context.read<LoginBloc>().add(LoginSubmitted());
+              },
+              isLoading: state.isLoading,
             ),
           ],
         );
