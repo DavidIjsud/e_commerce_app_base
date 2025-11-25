@@ -1,12 +1,13 @@
-import 'package:e_commerce_app_base/features/login/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/models/models.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/widgets/onboarding_carousel.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 
 /// Onboarding Page
 ///
@@ -68,16 +69,10 @@ class _OnboardingPageView extends StatelessWidget {
       body: OnboardingCarousel(
         pages: onboardingPages,
         onSkip: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const LoginPage()),
-          );
+          context.go(AppRouter.login);
         },
         onComplete: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const LoginPage()),
-          );
+          context.go(AppRouter.login);
         },
       ),
     );
