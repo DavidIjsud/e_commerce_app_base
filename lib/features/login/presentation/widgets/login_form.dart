@@ -25,120 +25,70 @@ class LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Email Field
-            Text(
-              l10n.login_email_label,
-              style: typography.bodyMediumMedium.copyWith(
-                color: colors.neutral100,
-                fontSize: 14,
-              ),
-            ),
-            const SizedBox(height: 8),
-            TextFormField(
+            AppTextFormField(
+              label: l10n.login_email_label,
+              hintText: l10n.login_email_placeholder,
               initialValue: state.formData.email,
               onChanged: (value) {
                 context.read<LoginBloc>().add(LoginEmailChanged(value));
               },
-              decoration: InputDecoration(
-                hintText: l10n.login_email_placeholder,
-                hintStyle: TextStyle(color: colors.neutral60),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: colors.neutral40),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: colors.neutral40),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: colors.primaryHoverIris,
-                    width: 2,
-                  ),
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
-                ),
-              ),
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
             ),
             const SizedBox(height: 20),
 
             // Password Field
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  l10n.login_password_label,
-                  style: typography.bodyMediumMedium.copyWith(
-                    color: colors.neutral100,
-                    fontSize: 14,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      l10n.login_password_label,
+                      style: typography.bodyMediumMedium.copyWith(
+                        color: colors.neutral100,
+                        fontSize: 14,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        // TODO: Navigate to forgot password
+                      },
+                      child: Text(
+                        l10n.login_forgot_password,
+                        style: typography.bodyMediumMedium.copyWith(
+                          color: colors.primaryHoverIris,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                TextButton(
-                  onPressed: () {
-                    // TODO: Navigate to forgot password
+                const SizedBox(height: 2),
+                AppTextFormField(
+                  hintText: l10n.login_password_placeholder,
+                  initialValue: state.formData.password,
+                  onChanged: (value) {
+                    context.read<LoginBloc>().add(LoginPasswordChanged(value));
                   },
-                  child: Text(
-                    l10n.login_forgot_password,
-                    style: typography.bodyMediumMedium.copyWith(
-                      color: colors.primaryHoverIris,
-                      fontSize: 14,
+                  obscureText: !state.isPasswordVisible,
+                  textInputAction: TextInputAction.done,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      context.read<LoginBloc>().add(
+                        LoginPasswordVisibilityToggled(),
+                      );
+                    },
+                    icon: Icon(
+                      state.isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: colors.neutral60,
                     ),
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 8),
-            TextFormField(
-              initialValue: state.formData.password,
-              onChanged: (value) {
-                context.read<LoginBloc>().add(LoginPasswordChanged(value));
-              },
-              obscureText: !state.isPasswordVisible,
-              decoration: InputDecoration(
-                hintText: l10n.login_password_placeholder,
-                hintStyle: TextStyle(color: colors.neutral60),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: colors.neutral40),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: colors.neutral40),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: colors.primaryHoverIris,
-                    width: 2,
-                  ),
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    context.read<LoginBloc>().add(
-                      LoginPasswordVisibilityToggled(),
-                    );
-                  },
-                  icon: Icon(
-                    state.isPasswordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                    color: colors.neutral60,
-                  ),
-                ),
-              ),
-              textInputAction: TextInputAction.done,
             ),
             const SizedBox(height: 32),
 

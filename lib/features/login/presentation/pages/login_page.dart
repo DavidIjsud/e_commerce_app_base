@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 10),
 
                 // Header
                 const LoginHeader(),
@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
                 // Social Login
                 const SocialLoginButtons(),
 
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
 
                 // Register Link
                 Center(
