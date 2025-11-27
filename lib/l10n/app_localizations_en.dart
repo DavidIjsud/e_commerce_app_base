@@ -83,4 +83,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login_register_link => 'Register';
+
+  @override
+  String get registration_title => 'Create your new account';
+
+  @override
+  String get registration_subtitle =>
+      'Create an account to start looking for the food you like';
+
+  @override
+  String get registration_email_label => 'Email Address';
+
+  @override
+  String get registration_email_placeholder => 'Enter Email';
+
+  @override
+  String get registration_username_label => 'User Name';
+
+  @override
+  String get registration_username_placeholder => 'Enter User Name';
+
+  @override
+  String get registration_password_label => 'Password';
+
+  @override
+  String get registration_password_placeholder => 'Enter Password';
+
+  @override
+  String get registration_terms_prefix => 'I Agree with ';
+
+  @override
+  String get registration_terms_of_service => 'Terms of Service';
+
+  @override
+  String get registration_terms_and => ' and ';
+
+  @override
+  String get registration_privacy_policy => 'Privacy Policy';
+
+  @override
+  String get registration_register_button => 'Register';
 }

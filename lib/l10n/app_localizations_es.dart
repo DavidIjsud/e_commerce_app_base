@@ -83,4 +83,45 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get login_register_link => 'Regístrate';
+
+  @override
+  String get registration_title => 'Crea tu nueva cuenta';
+
+  @override
+  String get registration_subtitle =>
+      'Crea una cuenta para comenzar a buscar la comida que te gusta';
+
+  @override
+  String get registration_email_label => 'Correo electrónico';
+
+  @override
+  String get registration_email_placeholder => 'Ingresa tu correo';
+
+  @override
+  String get registration_username_label => 'Nombre de usuario';
+
+  @override
+  String get registration_username_placeholder =>
+      'Ingresa tu nombre de usuario';
+
+  @override
+  String get registration_password_label => 'Contraseña';
+
+  @override
+  String get registration_password_placeholder => 'Ingresa tu contraseña';
+
+  @override
+  String get registration_terms_prefix => 'Estoy de acuerdo con los ';
+
+  @override
+  String get registration_terms_of_service => 'Términos de Servicio';
+
+  @override
+  String get registration_terms_and => ' y la ';
+
+  @override
+  String get registration_privacy_policy => 'Política de Privacidad';
+
+  @override
+  String get registration_register_button => 'Registrarse';
 }

@@ -235,6 +235,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register'**
   String get login_register_link;
+
+  /// No description provided for @registration_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your new account'**
+  String get registration_title;
+
+  /// No description provided for @registration_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to start looking for the food you like'**
+  String get registration_subtitle;
+
+  /// No description provided for @registration_email_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get registration_email_label;
+
+  /// No description provided for @registration_email_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email'**
+  String get registration_email_placeholder;
+
+  /// No description provided for @registration_username_label.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get registration_username_label;
+
+  /// No description provided for @registration_username_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter User Name'**
+  String get registration_username_placeholder;
+
+  /// No description provided for @registration_password_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get registration_password_label;
+
+  /// No description provided for @registration_password_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Password'**
+  String get registration_password_placeholder;
+
+  /// No description provided for @registration_terms_prefix.
+  ///
+  /// In en, this message translates to:
+  /// **'I Agree with '**
+  String get registration_terms_prefix;
+
+  /// No description provided for @registration_terms_of_service.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get registration_terms_of_service;
+
+  /// No description provided for @registration_terms_and.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get registration_terms_and;
+
+  /// No description provided for @registration_privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get registration_privacy_policy;
+
+  /// No description provided for @registration_register_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get registration_register_button;
 }
 
 class _AppLocalizationsDelegate

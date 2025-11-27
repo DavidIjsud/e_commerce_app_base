@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:e_commerce_app_base/features/login/presentation/pages/login_page.dart';
+import 'package:e_commerce_app_base/features/registration/presentation/pages/registration_page.dart';
 
 /// Application router configuration
 ///
@@ -9,6 +10,7 @@ class AppRouter {
   /// Route paths
   static const String onboarding = '/';
   static const String login = '/login';
+  static const String registration = '/registration';
 
   /// Create and configure the GoRouter instance
   static GoRouter createRouter() {
@@ -24,6 +26,11 @@ class AppRouter {
           path: login,
           name: 'login',
           builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: registration,
+          name: 'registration',
+          builder: (context, state) => const RegistrationPage(),
         ),
       ],
     );

@@ -28,5 +28,20 @@
   "login_sign_in_button": "Iniciar Sesión",
   "login_or_separator": "O inicia sesión con",
   "login_register_text": "¿No tienes una cuenta?",
-  "login_register_link": "Regístrate"
+  "login_register_link": "Regístrate",
+
+  "@_REGISTRATION": {},
+  "registration_title": "Crea tu nueva cuenta",
+  "registration_subtitle": "Crea una cuenta para comenzar a buscar la comida que te gusta",
+  "registration_email_label": "Correo electrónico",
+  "registration_email_placeholder": "Ingresa tu correo",
+  "registration_username_label": "Nombre de usuario",
+  "registration_username_placeholder": "Ingresa tu nombre de usuario",
+  "registration_password_label": "Contraseña",
+  "registration_password_placeholder": "Ingresa tu contraseña",
+  "registration_terms_prefix": "Estoy de acuerdo con los ",
+  "registration_terms_of_service": "Términos de Servicio",
+  "registration_terms_and": " y la ",
+  "registration_privacy_policy": "Política de Privacidad",
+  "registration_register_button": "Registrarse"
 }

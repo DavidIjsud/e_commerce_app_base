@@ -28,5 +28,20 @@
   "login_sign_in_button": "Sign In",
   "login_or_separator": "Or sign in with",
   "login_register_text": "Don't have an account?",
-  "login_register_link": "Register"
+  "login_register_link": "Register",
+
+  "@_REGISTRATION": {},
+  "registration_title": "Create your new account",
+  "registration_subtitle": "Create an account to start looking for the food you like",
+  "registration_email_label": "Email Address",
+  "registration_email_placeholder": "Enter Email",
+  "registration_username_label": "User Name",
+  "registration_username_placeholder": "Enter User Name",
+  "registration_password_label": "Password",
+  "registration_password_placeholder": "Enter Password",
+  "registration_terms_prefix": "I Agree with ",
+  "registration_terms_of_service": "Terms of Service",
+  "registration_terms_and": " and ",
+  "registration_privacy_policy": "Privacy Policy",
+  "registration_register_button": "Register"
 }
