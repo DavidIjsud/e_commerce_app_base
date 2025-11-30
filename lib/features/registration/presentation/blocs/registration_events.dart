@@ -54,3 +54,5 @@ class RegistrationTermsToggled extends RegistrationEvent {
 /// Event to submit registration form
 class RegistrationSubmitted extends RegistrationEvent {}
 
+
+
