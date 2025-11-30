@@ -1,4 +1,3 @@
-import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:e_commerce_app_base/injector.dart';
@@ -21,7 +20,7 @@ class RegistrationHeader extends StatelessWidget {
       children: [
         // Back Button
         IconButton(
-          onPressed: () => context.go(AppRouter.login),
+          onPressed: () => context.pop(),
           icon: Icon(Icons.arrow_back, color: colors.neutral100),
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),

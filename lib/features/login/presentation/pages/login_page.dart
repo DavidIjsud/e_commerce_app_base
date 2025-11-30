@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: () {
-                          context.go(AppRouter.registration);
+                          context.push(AppRouter.registration);
                         },
                         child: Text(
                           l10n.login_register_link,
