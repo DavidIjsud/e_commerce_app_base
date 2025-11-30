@@ -43,5 +43,12 @@
   "registration_terms_of_service": "Terms of Service",
   "registration_terms_and": " and ",
   "registration_privacy_policy": "Privacy Policy",
-  "registration_register_button": "Register"
+  "registration_register_button": "Register",
+
+  "@_RECOVERY_PASSWORD": {},
+  "recovery_password_title": "Forgot password?",
+  "recovery_password_description": "Enter your email address and we'll send you confirmation code to reset your password",
+  "recovery_password_email_label": "Email Address",
+  "recovery_password_email_placeholder": "Enter Email",
+  "recovery_password_continue_button": "Continue"
 }

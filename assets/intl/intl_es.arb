@@ -43,5 +43,12 @@
   "registration_terms_of_service": "Términos de Servicio",
   "registration_terms_and": " y la ",
   "registration_privacy_policy": "Política de Privacidad",
-  "registration_register_button": "Registrarse"
+  "registration_register_button": "Registrarse",
+
+  "@_RECOVERY_PASSWORD": {},
+  "recovery_password_title": "¿Olvidaste tu contraseña?",
+  "recovery_password_description": "Ingresa tu dirección de correo electrónico y te enviaremos un código de confirmación para restablecer tu contraseña",
+  "recovery_password_email_label": "Correo electrónico",
+  "recovery_password_email_placeholder": "Ingresa tu correo",
+  "recovery_password_continue_button": "Continuar"
 }

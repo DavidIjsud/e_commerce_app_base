@@ -313,6 +313,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register'**
   String get registration_register_button;
+
+  /// No description provided for @recovery_password_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get recovery_password_title;
+
+  /// No description provided for @recovery_password_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address and we\'ll send you confirmation code to reset your password'**
+  String get recovery_password_description;
+
+  /// No description provided for @recovery_password_email_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get recovery_password_email_label;
+
+  /// No description provided for @recovery_password_email_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Email'**
+  String get recovery_password_email_placeholder;
+
+  /// No description provided for @recovery_password_continue_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get recovery_password_continue_button;
 }
 
 class _AppLocalizationsDelegate

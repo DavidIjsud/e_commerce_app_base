@@ -124,4 +124,20 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get registration_register_button => 'Registrarse';
+
+  @override
+  String get recovery_password_title => '¿Olvidaste tu contraseña?';
+
+  @override
+  String get recovery_password_description =>
+      'Ingresa tu dirección de correo electrónico y te enviaremos un código de confirmación para restablecer tu contraseña';
+
+  @override
+  String get recovery_password_email_label => 'Correo electrónico';
+
+  @override
+  String get recovery_password_email_placeholder => 'Ingresa tu correo';
+
+  @override
+  String get recovery_password_continue_button => 'Continuar';
 }

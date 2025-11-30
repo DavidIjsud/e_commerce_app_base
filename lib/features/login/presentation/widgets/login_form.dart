@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_events.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_states.dart';
@@ -7,6 +8,7 @@ import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 import 'package:e_commerce_app_base/core/widgets/widgets.dart';
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 
 /// Login form widget with email and password inputs
 class LoginForm extends StatelessWidget {
@@ -53,7 +55,7 @@ class LoginForm extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // TODO: Navigate to forgot password
+                        context.push(AppRouter.recoveryPassword);
                       },
                       child: Text(
                         l10n.login_forgot_password,
