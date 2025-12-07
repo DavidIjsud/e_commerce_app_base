@@ -343,6 +343,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get recovery_password_continue_button;
+
+  /// No description provided for @otp_verification_title.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP'**
+  String get otp_verification_title;
+
+  /// No description provided for @otp_verification_page_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get otp_verification_page_title;
+
+  /// No description provided for @otp_verification_instruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the verification code we send you on:'**
+  String get otp_verification_instruction;
+
+  /// No description provided for @otp_verification_didnt_receive.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code?'**
+  String get otp_verification_didnt_receive;
+
+  /// No description provided for @otp_verification_resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get otp_verification_resend;
+
+  /// No description provided for @otp_verification_continue_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get otp_verification_continue_button;
 }
 
 class _AppLocalizationsDelegate

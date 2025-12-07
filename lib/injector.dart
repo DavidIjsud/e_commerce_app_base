@@ -28,5 +28,8 @@ class Get {
 
     // Register recovery password bloc as factory (fresh instance each time)
     injector.registerFactory(() => RecoveryPasswordBloc());
+
+    // Note: OTPVerificationBloc is created directly in the page with email parameter
+    // so it doesn't need to be registered in GetIt
   }
 }

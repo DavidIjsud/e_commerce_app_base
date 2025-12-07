@@ -50,5 +50,13 @@
   "recovery_password_description": "Ingresa tu dirección de correo electrónico y te enviaremos un código de confirmación para restablecer tu contraseña",
   "recovery_password_email_label": "Correo electrónico",
   "recovery_password_email_placeholder": "Ingresa tu correo",
-  "recovery_password_continue_button": "Continuar"
+  "recovery_password_continue_button": "Continuar",
+
+  "@_OTP_VERIFICATION": {},
+  "otp_verification_title": "OTP",
+  "otp_verification_page_title": "Verificación de correo electrónico",
+  "otp_verification_instruction": "Ingresa el código de verificación que te enviamos a:",
+  "otp_verification_didnt_receive": "¿No recibiste el código?",
+  "otp_verification_resend": "Reenviar",
+  "otp_verification_continue_button": "Continuar"
 }

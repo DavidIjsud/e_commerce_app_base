@@ -140,4 +140,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get recovery_password_continue_button => 'Continuar';
+
+  @override
+  String get otp_verification_title => 'OTP';
+
+  @override
+  String get otp_verification_page_title =>
+      'Verificación de correo electrónico';
+
+  @override
+  String get otp_verification_instruction =>
+      'Ingresa el código de verificación que te enviamos a:';
+
+  @override
+  String get otp_verification_didnt_receive => '¿No recibiste el código?';
+
+  @override
+  String get otp_verification_resend => 'Reenviar';
+
+  @override
+  String get otp_verification_continue_button => 'Continuar';
 }

@@ -3,6 +3,7 @@ import 'package:e_commerce_app_base/features/onboarding/presentation/pages/onboa
 import 'package:e_commerce_app_base/features/login/presentation/pages/login_page.dart';
 import 'package:e_commerce_app_base/features/registration/presentation/pages/registration_page.dart';
 import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/recovery_password_page.dart';
+import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/otp_verification_page.dart';
 
 /// Application router configuration
 ///
@@ -13,6 +14,7 @@ class AppRouter {
   static const String login = '/login';
   static const String registration = '/registration';
   static const String recoveryPassword = '/recovery-password';
+  static const String otpVerification = '/otp-verification';
 
   /// Create and configure the GoRouter instance
   static GoRouter createRouter() {
@@ -38,6 +40,14 @@ class AppRouter {
           path: recoveryPassword,
           name: 'recovery-password',
           builder: (context, state) => const RecoveryPasswordPage(),
+        ),
+        GoRoute(
+          path: otpVerification,
+          name: 'otp-verification',
+          builder: (context, state) {
+            final email = state.uri.queryParameters['email'] ?? '';
+            return OTPVerificationPage(email: email);
+          },
         ),
       ],
     );

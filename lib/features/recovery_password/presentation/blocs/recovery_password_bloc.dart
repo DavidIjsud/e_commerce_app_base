@@ -22,10 +22,10 @@ class RecoveryPasswordBloc
     );
   }
 
-  void _onSubmitted(
+  Future<void> _onSubmitted(
     RecoveryPasswordSubmitted event,
     Emitter<RecoveryPasswordState> emit,
-  ) {
+  ) async {
     // Validate form
     final validationError = _validateForm();
     if (validationError != null) {
@@ -44,6 +44,8 @@ class RecoveryPasswordBloc
     // TODO: Implement actual recovery password logic
     // For now, simulate success after a delay
     // In real implementation, call repository/use case here
+    await Future.delayed(const Duration(seconds: 3));
+    emit(state.copyWith(status: RecoveryPasswordStatus.success));
   }
 
   String? _validateForm() {
@@ -64,4 +66,3 @@ class RecoveryPasswordBloc
     return null;
   }
 }
-

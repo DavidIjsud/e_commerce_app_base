@@ -50,5 +50,13 @@
   "recovery_password_description": "Enter your email address and we'll send you confirmation code to reset your password",
   "recovery_password_email_label": "Email Address",
   "recovery_password_email_placeholder": "Enter Email",
-  "recovery_password_continue_button": "Continue"
+  "recovery_password_continue_button": "Continue",
+
+  "@_OTP_VERIFICATION": {},
+  "otp_verification_title": "OTP",
+  "otp_verification_page_title": "Email verification",
+  "otp_verification_instruction": "Enter the verification code we send you on:",
+  "otp_verification_didnt_receive": "Didn't receive code?",
+  "otp_verification_resend": "Resend",
+  "otp_verification_continue_button": "Continue"
 }
