@@ -14,10 +14,7 @@ import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 ///
 /// Displays OTP input fields, timer, and resend functionality
 class OTPVerificationPage extends StatelessWidget {
-  const OTPVerificationPage({
-    super.key,
-    this.email = '',
-  });
+  const OTPVerificationPage({super.key, this.email = ''});
 
   final String email;
 
@@ -26,12 +23,7 @@ class OTPVerificationPage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BlocProvider(
-      create: (context) {
-        // Get email from route parameters or use provided email
-        final routeEmail = GoRouterState.of(context).uri.queryParameters['email'] ?? '';
-        final finalEmail = email.isNotEmpty ? email : routeEmail;
-        return OTPVerificationBloc(email: finalEmail);
-      },
+      create: (context) => OTPVerificationBloc(email: email),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -60,8 +52,8 @@ class OTPVerificationPage extends StatelessWidget {
                         otpCode: state.formData.otpCode,
                         onCodeChanged: (code) {
                           context.read<OTPVerificationBloc>().add(
-                                OTPCodeChanged(code),
-                              );
+                            OTPCodeChanged(code),
+                          );
                         },
                       );
                     },
@@ -78,11 +70,12 @@ class OTPVerificationPage extends StatelessWidget {
                         onPressed: state.formData.otpCode.length == 4
                             ? () {
                                 context.read<OTPVerificationBloc>().add(
-                                      const OTPSubmitted(),
-                                    );
+                                  const OTPSubmitted(),
+                                );
                               }
                             : null,
-                        isLoading: state.status == OTPVerificationStatus.loading,
+                        isLoading:
+                            state.status == OTPVerificationStatus.loading,
                       );
                     },
                   ),
@@ -95,4 +88,3 @@ class OTPVerificationPage extends StatelessWidget {
     );
   }
 }
-

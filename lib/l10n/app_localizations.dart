@@ -379,6 +379,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get otp_verification_continue_button;
+
+  /// No description provided for @home_your_location.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Location'**
+  String get home_your_location;
+
+  /// No description provided for @home_header_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Provide the best food for you'**
+  String get home_header_title;
+
+  /// No description provided for @home_select_location.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Location'**
+  String get home_select_location;
+
+  /// No description provided for @home_find_by_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Find by Category'**
+  String get home_find_by_category;
+
+  /// No description provided for @home_see_all.
+  ///
+  /// In en, this message translates to:
+  /// **'See All'**
+  String get home_see_all;
+
+  /// No description provided for @home_bottom_nav_home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home_bottom_nav_home;
+
+  /// No description provided for @home_bottom_nav_shopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get home_bottom_nav_shopping;
+
+  /// No description provided for @home_bottom_nav_chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get home_bottom_nav_chat;
+
+  /// No description provided for @home_bottom_nav_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get home_bottom_nav_profile;
 }
 
 class _AppLocalizationsDelegate

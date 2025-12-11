@@ -58,5 +58,16 @@
   "otp_verification_instruction": "Ingresa el código de verificación que te enviamos a:",
   "otp_verification_didnt_receive": "¿No recibiste el código?",
   "otp_verification_resend": "Reenviar",
-  "otp_verification_continue_button": "Continuar"
+  "otp_verification_continue_button": "Continuar",
+
+  "@_HOME": {},
+  "home_your_location": "Tu Ubicación",
+  "home_header_title": "Proporcionamos la mejor comida para ti",
+  "home_select_location": "Seleccionar Ubicación",
+  "home_find_by_category": "Buscar por Categoría",
+  "home_see_all": "Ver Todo",
+  "home_bottom_nav_home": "Inicio",
+  "home_bottom_nav_shopping": "Compras",
+  "home_bottom_nav_chat": "Chat",
+  "home_bottom_nav_profile": "Perfil"
 }

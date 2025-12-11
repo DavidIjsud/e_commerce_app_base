@@ -18,4 +18,17 @@ class PalmyraAssets {
   String get googleIcon => '$svgs/google_icon.svg';
   String get facebookIcon => '$svgs/facebook_icon.svg';
   String get appleIcon => '$svgs/apple_icon.svg';
+
+  // Home Images
+  String get homeImages => '$images/home';
+  String get homeTopImage => '$homeImages/home-top-image.png';
+  String get homeCategories => '$homeImages/categories';
+  String get homeCategoryHamburger =>
+      '$homeCategories/home-category-hamburger.png';
+  String get homeCategoryTaco => '$homeCategories/home-category-taco.png';
+  String get homeCategoryDrink => '$homeCategories/home-category-drink.png';
+  String get homeCategoryPizza => '$homeCategories/home-category-pizza.png';
+  String get homeCategoryItems => '$homeImages/category-items';
+  String get homeCategoryItemHamburger =>
+      '$homeCategoryItems/hamburger/ordinary-burger.png';
 }

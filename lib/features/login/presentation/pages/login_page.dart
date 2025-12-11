@@ -2,6 +2,7 @@ import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
+import 'package:e_commerce_app_base/features/login/presentation/blocs/login_states.dart';
 import 'package:e_commerce_app_base/features/login/presentation/widgets/login_header.dart';
 import 'package:e_commerce_app_base/features/login/presentation/widgets/login_form.dart';
 import 'package:e_commerce_app_base/features/login/presentation/widgets/social_login_buttons.dart';
@@ -23,58 +24,66 @@ class LoginPage extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => Get.injector<LoginBloc>(),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
+      child: BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state.isSuccess) {
+            // Navigate to home page on successful login
+            context.go(AppRouter.home);
+          }
+        },
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
 
-                // Header
-                const LoginHeader(),
+                  // Header
+                  const LoginHeader(),
 
-                // Login Form
-                const LoginForm(),
+                  // Login Form
+                  const LoginForm(),
 
-                const SizedBox(height: 32),
+                  const SizedBox(height: 32),
 
-                // Social Login
-                const SocialLoginButtons(),
+                  // Social Login
+                  const SocialLoginButtons(),
 
-                const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                // Register Link
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        l10n.login_register_text,
-                        style: typography.bodyMediumRegular.copyWith(
-                          color: colors.neutral60,
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      GestureDetector(
-                        onTap: () {
-                          context.push(AppRouter.registration);
-                        },
-                        child: Text(
-                          l10n.login_register_link,
-                          style: typography.bodyMediumMedium.copyWith(
-                            color: colors.primaryHoverIris,
+                  // Register Link
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          l10n.login_register_text,
+                          style: typography.bodyMediumRegular.copyWith(
+                            color: colors.neutral60,
                             fontSize: 14,
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 4),
+                        GestureDetector(
+                          onTap: () {
+                            context.push(AppRouter.registration);
+                          },
+                          child: Text(
+                            l10n.login_register_link,
+                            style: typography.bodyMediumMedium.copyWith(
+                              color: colors.primaryHoverIris,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

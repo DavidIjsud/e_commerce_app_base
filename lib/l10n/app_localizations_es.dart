@@ -160,4 +160,31 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get otp_verification_continue_button => 'Continuar';
+
+  @override
+  String get home_your_location => 'Tu Ubicación';
+
+  @override
+  String get home_header_title => 'Proporcionamos la mejor comida para ti';
+
+  @override
+  String get home_select_location => 'Seleccionar Ubicación';
+
+  @override
+  String get home_find_by_category => 'Buscar por Categoría';
+
+  @override
+  String get home_see_all => 'Ver Todo';
+
+  @override
+  String get home_bottom_nav_home => 'Inicio';
+
+  @override
+  String get home_bottom_nav_shopping => 'Compras';
+
+  @override
+  String get home_bottom_nav_chat => 'Chat';
+
+  @override
+  String get home_bottom_nav_profile => 'Perfil';
 }

@@ -31,4 +31,26 @@ class EcommerceAssets extends PalmyraAssets {
   String get facebookIcon => '$svgs/facebook_icon.svg';
   @override
   String get appleIcon => '$svgs/apple_icon.svg';
+
+  // Home Images
+  @override
+  String get homeImages => '$images/home';
+  @override
+  String get homeTopImage => '$homeImages/home-top-image.png';
+  @override
+  String get homeCategories => '$homeImages/categories';
+  @override
+  String get homeCategoryHamburger =>
+      '$homeCategories/home-category-hamburger.png';
+  @override
+  String get homeCategoryTaco => '$homeCategories/home-category-taco.png';
+  @override
+  String get homeCategoryDrink => '$homeCategories/home-category-drink.png';
+  @override
+  String get homeCategoryPizza => '$homeCategories/home-category-pizza.png';
+  @override
+  String get homeCategoryItems => '$homeImages/category-items';
+  @override
+  String get homeCategoryItemHamburger =>
+      '$homeCategoryItems/hamburger/ordinary-burger.png';
 }

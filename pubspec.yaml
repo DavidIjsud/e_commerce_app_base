@@ -73,6 +73,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/ecommerce/images/onboarding/
+    - assets/ecommerce/images/home/
+    - assets/ecommerce/images/home/categories/
+    - assets/ecommerce/images/home/category-items/
+    - assets/ecommerce/images/home/category-items/hamburger/
     - assets/ecommerce/svgs/
     - assets/intl/
   # assets:
