@@ -9,6 +9,7 @@ import 'package:e_commerce_app_base/features/recovery_password/presentation/widg
 import 'package:e_commerce_app_base/features/recovery_password/presentation/widgets/otp_verification_timer.dart';
 import 'package:e_commerce_app_base/core/widgets/primary_button.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 
 /// Main OTP verification page
 ///
@@ -30,11 +31,12 @@ class OTPVerificationPage extends StatelessWidget {
           child: BlocListener<OTPVerificationBloc, OTPVerificationState>(
             listener: (context, state) {
               if (state.status == OTPVerificationStatus.completed) {
-                // TODO: Navigate to next page (e.g., new password page)
-                // For now, just pop
-                context.pop();
+                // Navigate to reset password page
+                context.push(AppRouter.resetPassword);
               }
             },
+            listenWhen: (previous, current) =>
+                previous.status != current.status,
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
               child: Column(

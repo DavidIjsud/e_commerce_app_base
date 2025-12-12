@@ -187,4 +187,20 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get home_bottom_nav_profile => 'Perfil';
+
+  @override
+  String get reset_password_title => 'Restablecer Contraseña';
+
+  @override
+  String get reset_password_instruction =>
+      'Tu nueva contraseña debe ser diferente de la contraseña previamente usada';
+
+  @override
+  String get reset_password_new_password_label => 'Nueva Contraseña';
+
+  @override
+  String get reset_password_confirm_password_label => 'Confirmar Contraseña';
+
+  @override
+  String get reset_password_verify_button => 'Verificar Cuenta';
 }

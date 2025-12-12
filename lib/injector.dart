@@ -3,6 +3,7 @@ import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboa
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
 import 'package:e_commerce_app_base/features/registration/presentation/blocs/registration_bloc.dart';
 import 'package:e_commerce_app_base/features/recovery_password/presentation/blocs/recovery_password_bloc.dart';
+import 'package:e_commerce_app_base/features/recovery_password/presentation/blocs/reset_password_bloc.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.dart';
 import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +30,9 @@ class Get {
 
     // Register recovery password bloc as factory (fresh instance each time)
     injector.registerFactory(() => RecoveryPasswordBloc());
+
+    // Register reset password bloc as factory (fresh instance each time)
+    injector.registerFactory(() => ResetPasswordBloc());
 
     // Register home bloc as factory (fresh instance each time)
     injector.registerFactory(() => HomeBloc());

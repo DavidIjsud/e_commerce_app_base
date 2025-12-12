@@ -7,10 +7,10 @@ import 'package:e_commerce_app_base/features/recovery_password/presentation/mode
 /// BLoC for managing OTP verification state
 class OTPVerificationBloc
     extends Bloc<OTPVerificationEvent, OTPVerificationState> {
-  OTPVerificationBloc({String email = ''}) 
-      : super(OTPVerificationState(
-          formData: OTPVerificationFormData(email: email),
-        )) {
+  OTPVerificationBloc({String email = ''})
+    : super(
+        OTPVerificationState(formData: OTPVerificationFormData(email: email)),
+      ) {
     on<OTPCodeChanged>(_onCodeChanged);
     on<OTPSubmitted>(_onSubmitted);
     on<OTPResendPressed>(_onResendPressed);
@@ -47,10 +47,10 @@ class OTPVerificationBloc
   ) {
     final updatedFormData = state.formData.copyWith(otpCode: event.code);
     String? errorMessage;
-    
+
     // Clear error if code is being entered and is valid
-    if (state.status == OTPVerificationStatus.error && 
-        event.code.length == 4 && 
+    if (state.status == OTPVerificationStatus.error &&
+        event.code.length == 4 &&
         _isValidOTP(event.code)) {
       errorMessage = null;
     }
@@ -59,8 +59,8 @@ class OTPVerificationBloc
       state.copyWith(
         formData: updatedFormData,
         errorMessage: errorMessage,
-        status: errorMessage == null 
-            ? OTPVerificationStatus.active 
+        status: errorMessage == null
+            ? OTPVerificationStatus.active
             : state.status,
       ),
     );
@@ -69,7 +69,7 @@ class OTPVerificationBloc
   void _onSubmitted(
     OTPSubmitted event,
     Emitter<OTPVerificationState> emit,
-  ) {
+  ) async {
     // Validate OTP
     final validationError = _validateOTP();
     if (validationError != null) {
@@ -86,8 +86,9 @@ class OTPVerificationBloc
     emit(state.copyWith(status: OTPVerificationStatus.loading));
 
     // TODO: Implement actual OTP verification logic
-    // For now, simulate success after a delay
-    // In real implementation, call repository/use case here
+    // For now, simulate success after a delay with a delay
+    await Future.delayed(const Duration(seconds: 2));
+    emit(state.copyWith(status: OTPVerificationStatus.completed));
   }
 
   void _onResendPressed(
@@ -157,4 +158,3 @@ class OTPVerificationBloc
     return super.close();
   }
 }
-

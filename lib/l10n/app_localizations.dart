@@ -433,6 +433,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get home_bottom_nav_profile;
+
+  /// No description provided for @reset_password_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password_title;
+
+  /// No description provided for @reset_password_instruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Your new password must be different from the previously used password'**
+  String get reset_password_instruction;
+
+  /// No description provided for @reset_password_new_password_label.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get reset_password_new_password_label;
+
+  /// No description provided for @reset_password_confirm_password_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get reset_password_confirm_password_label;
+
+  /// No description provided for @reset_password_verify_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Account'**
+  String get reset_password_verify_button;
 }
 
 class _AppLocalizationsDelegate

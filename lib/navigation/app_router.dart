@@ -4,6 +4,7 @@ import 'package:e_commerce_app_base/features/login/presentation/pages/login_page
 import 'package:e_commerce_app_base/features/registration/presentation/pages/registration_page.dart';
 import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/recovery_password_page.dart';
 import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/otp_verification_page.dart';
+import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/reset_password_page.dart';
 import 'package:e_commerce_app_base/features/home/presentation/pages/home_page.dart';
 
 /// Application router configuration
@@ -16,6 +17,7 @@ class AppRouter {
   static const String registration = '/registration';
   static const String recoveryPassword = '/recovery-password';
   static const String otpVerification = '/otp-verification';
+  static const String resetPassword = '/reset-password';
   static const String home = '/home';
 
   /// Create and configure the GoRouter instance
@@ -50,6 +52,11 @@ class AppRouter {
             final email = state.uri.queryParameters['email'] ?? '';
             return OTPVerificationPage(email: email);
           },
+        ),
+        GoRoute(
+          path: resetPassword,
+          name: 'reset-password',
+          builder: (context, state) => const ResetPasswordPage(),
         ),
         GoRoute(
           path: home,

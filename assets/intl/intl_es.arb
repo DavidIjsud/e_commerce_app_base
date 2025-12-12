@@ -69,5 +69,12 @@
   "home_bottom_nav_home": "Inicio",
   "home_bottom_nav_shopping": "Compras",
   "home_bottom_nav_chat": "Chat",
-  "home_bottom_nav_profile": "Perfil"
+  "home_bottom_nav_profile": "Perfil",
+
+  "@_RESET_PASSWORD": {},
+  "reset_password_title": "Restablecer Contraseña",
+  "reset_password_instruction": "Tu nueva contraseña debe ser diferente de la contraseña previamente usada",
+  "reset_password_new_password_label": "Nueva Contraseña",
+  "reset_password_confirm_password_label": "Confirmar Contraseña",
+  "reset_password_verify_button": "Verificar Cuenta"
 }
