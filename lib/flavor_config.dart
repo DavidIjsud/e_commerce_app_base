@@ -16,6 +16,8 @@ abstract class FlavorConfig {
 
   static PalmyraSoftTheme _resolveTheme(Flavor flavor) {
     switch (flavor) {
+      case Flavor.ecommerceLocal:
+        return PalmyraSoftTheme();
       case Flavor.ecommerceDevelopment:
         return PalmyraSoftTheme();
       case Flavor.ecommerceProduction:
@@ -27,6 +29,8 @@ abstract class FlavorConfig {
 
   static PalmyraAssets _resolveAssets(Flavor flavor) {
     switch (flavor) {
+      case Flavor.ecommerceLocal:
+        return EcommerceAssets();
       case Flavor.ecommerceDevelopment:
         return EcommerceAssets();
       case Flavor.ecommerceProduction:

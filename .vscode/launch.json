@@ -2,6 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Flutter: Run (Local)",
+            "type": "dart",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "lib/main_local.dart",
+            "flutterMode": "debug"
+        },
+        {
             "name": "Flutter: Run (Debug)",
             "type": "dart",
             "request": "launch",

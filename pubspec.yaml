@@ -84,6 +84,7 @@ flutter:
     - assets/ecommerce/svgs/
     - assets/intl/
     - .env.development
+    - .env.local
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
