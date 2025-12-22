@@ -203,4 +203,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reset_password_verify_button => 'Verificar Cuenta';
+
+  @override
+  String get reset_password_success_title => 'Contraseña Cambiada';
+
+  @override
+  String get reset_password_success_message =>
+      'Contraseña cambiada exitosamente, puedes iniciar sesión nuevamente con tu nueva contraseña';
+
+  @override
+  String get reset_password_success_back_to_login =>
+      'Volver al inicio de sesión';
 }

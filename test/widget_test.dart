@@ -5,15 +5,16 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/flavor_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:e_commerce_app_base/main.dart';
+import 'package:e_commerce_app_base/main_development.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    final config = FlavorConfig.initConfig();
+    final config = FlavorConfig.initConfig(Flavor.ecommerceDevelopment);
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(config: config));
 

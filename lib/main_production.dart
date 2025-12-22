@@ -1,13 +1,23 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app_base/boostrap.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/flavor_config.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
-  final config = FlavorConfig.initConfig();
+void main() async {
+  try {
+    await dotenv.load(fileName: '.env.production');
+    log('Environment variables loaded successfully');
+  } catch (e) {
+    log('Error loading environment variables: $e');
+  }
+
+  final config = FlavorConfig.initConfig(Flavor.ecommerceProduction);
 
   boostrap(() async {
     return MyApp(config: config);

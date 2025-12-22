@@ -201,4 +201,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset_password_verify_button => 'Verify Account';
+
+  @override
+  String get reset_password_success_title => 'Password Changed';
+
+  @override
+  String get reset_password_success_message =>
+      'Password changed successfully, you can login again with a new password';
+
+  @override
+  String get reset_password_success_back_to_login => 'Back to login';
 }

@@ -31,4 +31,9 @@ class PalmyraAssets {
   String get homeCategoryItems => '$homeImages/category-items';
   String get homeCategoryItemHamburger =>
       '$homeCategoryItems/hamburger/ordinary-burger.png';
+
+  // Reset Password Images
+  String get resetPasswordImages => '$images/reset_password';
+  String get resetPasswordSuccessIllustration =>
+      '$resetPasswordImages/success_illustration.png';
 }

@@ -5,27 +5,24 @@
             "name": "Flutter: Run (Debug)",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main.dart",
             "cwd": "${workspaceFolder}",
-            "args": [],
+            "program": "lib/main_development.dart",
             "flutterMode": "debug"
         },
         {
             "name": "Flutter: Run (Profile)",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main.dart",
+            "program": "lib/main_staging.dart",
             "cwd": "${workspaceFolder}",
-            "args": [],
             "flutterMode": "profile"
         },
         {
             "name": "Flutter: Run (Release)",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main.dart",
+            "program": "lib/main_production.dart",
             "cwd": "${workspaceFolder}",
-            "args": [],
             "flutterMode": "release"
         }
     ]

@@ -53,4 +53,11 @@ class EcommerceAssets extends PalmyraAssets {
   @override
   String get homeCategoryItemHamburger =>
       '$homeCategoryItems/hamburger/ordinary-burger.png';
+
+  // Reset Password Images
+  @override
+  String get resetPasswordImages => '$images/reset_password';
+  @override
+  String get resetPasswordSuccessIllustration =>
+      '$resetPasswordImages/success_illustration.png';
 }

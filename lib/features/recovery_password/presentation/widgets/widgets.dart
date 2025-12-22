@@ -5,4 +5,5 @@ export 'otp_verification_content.dart';
 export 'otp_verification_timer.dart';
 export 'reset_password_header.dart';
 export 'reset_password_form.dart';
+export 'reset_password_success_modal.dart';
 

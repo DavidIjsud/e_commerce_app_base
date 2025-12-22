@@ -463,6 +463,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verify Account'**
   String get reset_password_verify_button;
+
+  /// No description provided for @reset_password_success_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Changed'**
+  String get reset_password_success_title;
+
+  /// No description provided for @reset_password_success_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully, you can login again with a new password'**
+  String get reset_password_success_message;
+
+  /// No description provided for @reset_password_success_back_to_login.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to login'**
+  String get reset_password_success_back_to_login;
 }
 
 class _AppLocalizationsDelegate

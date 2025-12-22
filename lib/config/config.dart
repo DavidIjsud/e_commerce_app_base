@@ -7,6 +7,12 @@ class Config {
   final PalmyraSoftTheme theme;
   final PalmyraAssets assets;
   final Flavor flavor;
+  final String apiBaseUrl;
 
-  Config({required this.theme, required this.assets, required this.flavor});
+  Config({
+    required this.theme,
+    required this.assets,
+    required this.flavor,
+    required this.apiBaseUrl,
+  });
 }

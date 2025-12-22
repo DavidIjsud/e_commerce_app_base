@@ -11,6 +11,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+.cursor/
 
 # IntelliJ related
 *.iml
@@ -46,3 +47,10 @@ app.*.map.json
 
 # flavor
 /flavor/
+
+# enviroments
+.env
+.env.development
+.env.production
+.env.staging
+.env.local

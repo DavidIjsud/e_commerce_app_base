@@ -2,16 +2,15 @@ import 'package:e_commerce_app_base/config/assets/ecommerce.dart';
 import 'package:e_commerce_app_base/config/assets/palmyra_assets.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/themes/palmyrasoft_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class FlavorConfig {
-  static Config initConfig() {
-    final flavor = _resolveFlavor(
-      String.fromEnvironment('FLAVOR', defaultValue: 'ecommerceDevelopment'),
-    );
+  static Config initConfig(Flavor flavor) {
     return Config(
       theme: _resolveTheme(flavor),
       assets: _resolveAssets(flavor),
       flavor: flavor,
+      apiBaseUrl: dotenv.env['API_BASE_URL']!,
     );
   }
 
@@ -34,19 +33,6 @@ abstract class FlavorConfig {
         return EcommerceAssets();
       case Flavor.ecommerceStaging:
         return EcommerceAssets();
-    }
-  }
-
-  static Flavor _resolveFlavor(String flavorName) {
-    switch (flavorName) {
-      case 'ecommerceDevelopment':
-        return Flavor.ecommerceDevelopment;
-      case 'ecommerceProduction':
-        return Flavor.ecommerceProduction;
-      case 'ecommerceStaging':
-        return Flavor.ecommerceStaging;
-      default:
-        throw Exception('Unknown flavor: $flavorName');
     }
   }
 }

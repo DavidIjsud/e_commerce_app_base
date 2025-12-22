@@ -76,5 +76,8 @@
   "reset_password_instruction": "Your new password must be different from the previously used password",
   "reset_password_new_password_label": "New Password",
   "reset_password_confirm_password_label": "Confirm Password",
-  "reset_password_verify_button": "Verify Account"
+  "reset_password_verify_button": "Verify Account",
+  "reset_password_success_title": "Password Changed",
+  "reset_password_success_message": "Password changed successfully, you can login again with a new password",
+  "reset_password_success_back_to_login": "Back to login"
 }

@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:e_commerce_app_base/config/config.dart';
+import 'package:e_commerce_app_base/core/network/dio_client.dart';
+import 'package:e_commerce_app_base/core/storage/storage.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
 import 'package:e_commerce_app_base/features/registration/presentation/blocs/registration_bloc.dart';
@@ -14,6 +17,35 @@ class Get {
 
   static void init({required Config config}) {
     injector.registerLazySingleton(() => config);
+
+    // Register Storage Repository as singleton
+    // Registramos la interfaz, pero inyectamos la implementación concreta
+    injector.registerLazySingleton<StorageRepository>(
+      () => SecureStorage(),
+    );
+
+    // Register DIO client as singleton
+    // Usa StorageRepository para obtener el token de forma asíncrona
+    injector.registerLazySingleton<Dio>(
+      () {
+        final storage = injector<StorageRepository>();
+        return DioClient.create(
+          config.apiBaseUrl,
+          enableLogging: config.flavor == Flavor.ecommerceDevelopment,
+          getTokenAsync: () async {
+            return await storage.read(StorageKeys.accessToken);
+          },
+          onTokenExpiredAsync: () async {
+            // Limpiar tokens cuando expiren
+            final storage = injector<StorageRepository>();
+            await storage.delete(StorageKeys.accessToken);
+            await storage.delete(StorageKeys.refreshToken);
+            // TODO: Navegar a login si es necesario
+            // Esto requeriría acceso al router, que se puede hacer después
+          },
+        );
+      },
+    );
 
     // Register router as singleton (single instance for the entire app)
     injector.registerLazySingleton<GoRouter>(() => AppRouter.createRouter());
