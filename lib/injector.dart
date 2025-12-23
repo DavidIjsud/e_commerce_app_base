@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/core/network/dio_client.dart';
 import 'package:e_commerce_app_base/core/storage/storage.dart';
+import 'package:e_commerce_app_base/features/login/data/data.dart';
+import 'package:e_commerce_app_base/features/login/domain/domain.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
 import 'package:e_commerce_app_base/features/registration/presentation/blocs/registration_bloc.dart';
@@ -50,12 +52,27 @@ class Get {
     // Register router as singleton (single instance for the entire app)
     injector.registerLazySingleton<GoRouter>(() => AppRouter.createRouter());
 
+    // Register Login DataSource as singleton
+    injector.registerLazySingleton<LoginRemoteDataSource>(
+      () => LoginRemoteDataSourceImpl(injector<Dio>()),
+    );
+
+    // Register Login Repository as singleton
+    injector.registerLazySingleton<LoginRepository>(
+      () => LoginRepositoryImpl(
+        remoteDataSource: injector<LoginRemoteDataSource>(),
+        storage: injector<StorageRepository>(),
+      ),
+    );
+
     // Register onboarding bloc as factory (fresh instance each time)
     // This ensures onboarding starts with clean state every visit
     injector.registerFactory(() => OnboardingBloc());
 
     // Register login bloc as factory (fresh instance each time)
-    injector.registerFactory(() => LoginBloc());
+    injector.registerFactory(
+      () => LoginBloc(loginRepository: injector<LoginRepository>()),
+    );
 
     // Register registration bloc as factory (fresh instance each time)
     injector.registerFactory(() => RegistrationBloc());

@@ -1,10 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_commerce_app_base/core/network/exceptions/exceptions.dart';
+import 'package:e_commerce_app_base/features/login/domain/domain.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_events.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_states.dart';
 
 /// BLoC for managing login state and business logic
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginState()) {
+  final LoginRepository loginRepository;
+
+  LoginBloc({required this.loginRepository}) : super(const LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginPasswordVisibilityToggled>(_onPasswordVisibilityToggled);
@@ -59,16 +63,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(status: LoginStatus.loading));
 
     try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
+      await loginRepository.login(
+        email: state.formData.email,
+        password: state.formData.password.isEmpty
+            ? null
+            : state.formData.password,
+      );
 
-      // For now, just simulate success
-      emit(state.copyWith(status: LoginStatus.success));
+      // Login exitoso - el token ya fue guardado en SecureStorage por el repositorio
+      emit(state.copyWith(status: LoginStatus.success, errorMessage: null));
+    } on ServerException catch (e) {
+      // Error del servidor (404, 500, etc.)
+      emit(state.copyWith(status: LoginStatus.error, errorMessage: e.message));
+    } on NetworkException catch (e) {
+      // Error de red (sin internet, timeout, etc.)
+      emit(state.copyWith(status: LoginStatus.error, errorMessage: e.message));
     } catch (e) {
+      // Cualquier otro error no esperado
       emit(
         state.copyWith(
           status: LoginStatus.error,
-          errorMessage: 'Login failed. Please try again.',
+          errorMessage: 'An unexpected error occurred. Please try again.',
         ),
       );
     }
@@ -83,9 +98,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       return 'Please enter a valid email address';
     }
 
-    if (state.formData.password.isEmpty) {
-      return 'Please enter your password';
-    }
+    // Password es opcional si se usa login con provider (Google, Facebook, etc.)
+    // Solo validamos password si el usuario está intentando hacer login con email/password
+    // Por ahora, validamos que haya password, pero esto se puede ajustar según la UI
+    // Si el usuario selecciona "Login with Google", no se requiere password
+    // if (state.formData.password.isEmpty) {
+    //   return 'Please enter your password';
+    // }
 
     return null; // Form is valid
   }
