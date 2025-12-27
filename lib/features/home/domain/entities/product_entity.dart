@@ -1,7 +1,7 @@
 import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
 
 /// Entidad Product del dominio
-/// 
+///
 /// Representa un producto en la capa de dominio
 class ProductEntity {
   final String id;
@@ -16,6 +16,8 @@ class ProductEntity {
   final CategoryEntity category;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final String description;
+  final bool isFavorite;
 
   const ProductEntity({
     required this.id,
@@ -30,6 +32,8 @@ class ProductEntity {
     required this.category,
     required this.createdAt,
     required this.updatedAt,
+    required this.description,
+    required this.isFavorite,
   });
 
   /// Precio con descuento aplicado
@@ -43,4 +47,3 @@ class ProductEntity {
   /// Indica si el producto tiene descuento
   bool get hasDiscount => discountPercentage > 0;
 }
-

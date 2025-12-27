@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -13,7 +13,7 @@ class FoodItemCard extends StatelessWidget {
     required this.onFavoriteTap,
   });
 
-  final FoodItem item;
+  final FoodItemViewModel item;
   final VoidCallback onFavoriteTap;
 
   @override

@@ -1,3 +1,3 @@
-export 'category_model.dart';
-export 'product_model.dart';
+export 'category_dto.dart';
+export 'product_dto.dart';
 

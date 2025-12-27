@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/category.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -13,7 +13,7 @@ class CategoryCard extends StatelessWidget {
     required this.onTap,
   });
 
-  final Category category;
+  final CategoryViewModel category;
   final VoidCallback onTap;
 
   @override

@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-/// Temporary model for food items
-/// 
-/// This will be replaced with API data in the future
-class FoodItem extends Equatable {
-  const FoodItem({
+/// ViewModel para items de comida/productos en la capa de presentación
+///
+/// Representa un producto formateado para la UI, con campos específicos
+/// de presentación como rating, distance, y precio formateado.
+/// Este ViewModel se crea a partir de ProductEntity mediante mapeo.
+class FoodItemViewModel extends Equatable {
+  const FoodItemViewModel({
     required this.id,
     required this.name,
     required this.imagePath,
@@ -22,7 +24,7 @@ class FoodItem extends Equatable {
   final String price; // e.g., "$ 17,230"
   final bool isFavorite;
 
-  FoodItem copyWith({
+  FoodItemViewModel copyWith({
     String? id,
     String? name,
     String? imagePath,
@@ -31,7 +33,7 @@ class FoodItem extends Equatable {
     String? price,
     bool? isFavorite,
   }) {
-    return FoodItem(
+    return FoodItemViewModel(
       id: id ?? this.id,
       name: name ?? this.name,
       imagePath: imagePath ?? this.imagePath,

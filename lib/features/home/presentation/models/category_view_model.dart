@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 
-/// Temporary model for food categories
-/// 
-/// This will be replaced with API data in the future
-class Category extends Equatable {
-  const Category({
+/// ViewModel para categorías en la capa de presentación
+///
+/// Representa una categoría formateada para la UI, incluyendo
+/// los items asociados y el estado de selección.
+class CategoryViewModel extends Equatable {
+  const CategoryViewModel({
     required this.id,
     required this.name,
     required this.imagePath,
@@ -16,17 +17,17 @@ class Category extends Equatable {
   final String id;
   final String name;
   final String imagePath;
-  final List<FoodItem> items;
+  final List<FoodItemViewModel> items;
   final bool isSelected;
 
-  Category copyWith({
+  CategoryViewModel copyWith({
     String? id,
     String? name,
     String? imagePath,
-    List<FoodItem>? items,
+    List<FoodItemViewModel>? items,
     bool? isSelected,
   }) {
-    return Category(
+    return CategoryViewModel(
       id: id ?? this.id,
       name: name ?? this.name,
       imagePath: imagePath ?? this.imagePath,

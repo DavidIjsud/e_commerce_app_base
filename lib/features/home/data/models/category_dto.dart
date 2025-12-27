@@ -1,21 +1,21 @@
 import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
 
-/// Modelo de datos (DTO) para Category
-class CategoryModel extends CategoryEntity {
-  const CategoryModel({
+/// Data Transfer Object (DTO) para Category
+class CategoryDTO extends CategoryEntity {
+  const CategoryDTO({
     required super.id,
     required super.name,
   });
 
-  /// Crea un CategoryModel desde un JSON
-  factory CategoryModel.fromJson(Map<String, dynamic> json) {
-    return CategoryModel(
+  /// Crea un CategoryDTO desde un JSON
+  factory CategoryDTO.fromJson(Map<String, dynamic> json) {
+    return CategoryDTO(
       id: json['id'] as String,
       name: json['categoryName'] as String,
     );
   }
 
-  /// Convierte el modelo a JSON
+  /// Convierte el DTO a JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -23,7 +23,7 @@ class CategoryModel extends CategoryEntity {
     };
   }
 
-  /// Convierte el modelo a entidad del dominio
+  /// Convierte el DTO a entidad del dominio
   CategoryEntity toEntity() {
     return CategoryEntity(
       id: id,

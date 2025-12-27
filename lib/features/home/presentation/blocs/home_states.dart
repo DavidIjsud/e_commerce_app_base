@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/category.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 
 /// Status enum for home
 enum HomeStatus { initial, loading, loaded, error }
@@ -22,7 +22,7 @@ class HomeState extends Equatable {
   });
 
   final HomeStatus status;
-  final List<Category> categories;
+  final List<CategoryViewModel> categories;
   final String? selectedCategoryId;
   final String selectedLocation;
   final List<String> availableLocations;
@@ -30,7 +30,7 @@ class HomeState extends Equatable {
   final String? errorMessage;
 
   /// Get selected category
-  Category? get selectedCategory {
+  CategoryViewModel? get selectedCategory {
     if (selectedCategoryId == null) return null;
     try {
       return categories.firstWhere((cat) => cat.id == selectedCategoryId);
@@ -40,14 +40,14 @@ class HomeState extends Equatable {
   }
 
   /// Get food items for selected category
-  List<FoodItem> get selectedCategoryItems {
+  List<FoodItemViewModel> get selectedCategoryItems {
     final category = selectedCategory;
     return category?.items ?? [];
   }
 
   HomeState copyWith({
     HomeStatus? status,
-    List<Category>? categories,
+    List<CategoryViewModel>? categories,
     String? selectedCategoryId,
     String? selectedLocation,
     List<String>? availableLocations,

@@ -3,8 +3,8 @@ import 'package:e_commerce_app_base/core/network/exceptions/exceptions.dart';
 import 'package:e_commerce_app_base/features/home/domain/domain.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_events.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_states.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/category.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
+import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/config/assets/ecommerce.dart';
 
@@ -103,7 +103,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   /// Mapea productos de la API a categorías con items
-  List<Category> _mapProductsToCategories(List<ProductEntity> products) {
+  List<CategoryViewModel> _mapProductsToCategories(
+    List<ProductEntity> products,
+  ) {
     final assets = config.assets as EcommerceAssets;
 
     // Agrupar productos por categoría
@@ -116,8 +118,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       productsByCategory[categoryId]!.add(product);
     }
 
-    // Convertir a lista de Category
-    final categories = <Category>[];
+    // Convertir a lista de CategoryViewModel
+    final categories = <CategoryViewModel>[];
     for (final entry in productsByCategory.entries) {
       final categoryProducts = entry.value;
       if (categoryProducts.isEmpty) continue;
@@ -137,7 +139,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final categoryIcon = _getCategoryIcon(categoryEntity.name, assets);
 
       categories.add(
-        Category(
+        CategoryViewModel(
           id: categoryEntity.id,
           name: categoryEntity.name,
           imagePath: categoryIcon,
@@ -158,8 +160,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     return categories;
   }
 
-  /// Mapea un ProductEntity a FoodItem
-  FoodItem _mapProductToFoodItem(
+  /// Mapea un ProductEntity a FoodItemViewModel
+  FoodItemViewModel _mapProductToFoodItem(
     ProductEntity product,
     EcommerceAssets assets,
   ) {
@@ -170,7 +172,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     // Campos hardcodeados (no vienen en la respuesta)
     final rating = 4.5; // Hardcoded
     final distance = '150m'; // Hardcoded
-    final isFavorite = false; // Hardcoded
+    final isFavorite = product.isFavorite;
     final imagePath = product.image.isNotEmpty
         ? product.image
         : assets.homeCategoryItemHamburger; // Fallback si no hay imagen
@@ -178,7 +180,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     // Formatear precio
     final formattedPrice = '\$ ${price.toStringAsFixed(2)}';
 
-    return FoodItem(
+    return FoodItemViewModel(
       id: product.id,
       name: name,
       imagePath: imagePath,
