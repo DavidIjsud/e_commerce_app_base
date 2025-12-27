@@ -6,6 +6,7 @@ import 'package:e_commerce_app_base/features/home/presentation/blocs/home_states
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_header.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_categories.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food_items_grid.dart';
+import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food_items_grid_skeleton.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_bottom_navigation.dart';
 import 'package:e_commerce_app_base/injector.dart';
 
@@ -28,8 +29,33 @@ class HomePage extends StatelessWidget {
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state.status == HomeStatus.loading) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return Column(
+                children: [
+                  // Header with top image
+                  HomeHeader(
+                    selectedLocation: state.selectedLocation,
+                    availableLocations: state.availableLocations,
+                    onLocationChanged: (location) {
+                      context.read<HomeBloc>().add(LocationChanged(location));
+                    },
+                  ),
+                  // Content with skeleton
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 24),
+                          // Categories skeleton (puedes crear uno si quieres)
+                          const SizedBox(height: 24),
+                          // Food items grid skeleton
+                          const HomeFoodItemsGridSkeleton(),
+                          const SizedBox(height: 24),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               );
             }
 
@@ -46,9 +72,7 @@ class HomePage extends StatelessWidget {
                   selectedLocation: state.selectedLocation,
                   availableLocations: state.availableLocations,
                   onLocationChanged: (location) {
-                    context.read<HomeBloc>().add(
-                          LocationChanged(location),
-                        );
+                    context.read<HomeBloc>().add(LocationChanged(location));
                   },
                 ),
                 // Content
@@ -57,7 +81,6 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 24),
                         // Categories
                         const HomeCategories(),
                         const SizedBox(height: 24),
@@ -77,4 +100,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

@@ -46,11 +46,25 @@ class FoodItemCard extends StatelessWidget {
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(16),
                   ),
-                  child: Image.asset(
-                    item.imagePath,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                  child: item.imagePath.startsWith('http')
+                      ? Image.network(
+                          item.imagePath,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            // Fallback si la imagen de red falla
+                            return Image.asset(
+                              item.imagePath,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        )
+                      : Image.asset(
+                          item.imagePath,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                 ),
                 Positioned(
                   top: 8,

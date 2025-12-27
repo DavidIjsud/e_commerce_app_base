@@ -4,6 +4,8 @@ import 'package:e_commerce_app_base/core/network/dio_client.dart';
 import 'package:e_commerce_app_base/core/storage/storage.dart';
 import 'package:e_commerce_app_base/features/login/data/data.dart';
 import 'package:e_commerce_app_base/features/login/domain/domain.dart';
+import 'package:e_commerce_app_base/features/home/data/data.dart';
+import 'package:e_commerce_app_base/features/home/domain/domain.dart';
 import 'package:e_commerce_app_base/features/onboarding/presentation/blocs/onboarding_bloc.dart';
 import 'package:e_commerce_app_base/features/login/presentation/blocs/login_bloc.dart';
 import 'package:e_commerce_app_base/features/registration/presentation/blocs/registration_bloc.dart';
@@ -65,6 +67,18 @@ class Get {
       ),
     );
 
+    // Register Products DataSource as singleton
+    injector.registerLazySingleton<ProductsRemoteDataSource>(
+      () => ProductsRemoteDataSourceImpl(injector<Dio>()),
+    );
+
+    // Register Products Repository as singleton
+    injector.registerLazySingleton<ProductsRepository>(
+      () => ProductsRepositoryImpl(
+        remoteDataSource: injector<ProductsRemoteDataSource>(),
+      ),
+    );
+
     // Register onboarding bloc as factory (fresh instance each time)
     // This ensures onboarding starts with clean state every visit
     injector.registerFactory(() => OnboardingBloc());
@@ -84,7 +98,12 @@ class Get {
     injector.registerFactory(() => ResetPasswordBloc());
 
     // Register home bloc as factory (fresh instance each time)
-    injector.registerFactory(() => HomeBloc());
+    injector.registerFactory(
+      () => HomeBloc(
+        productsRepository: injector<ProductsRepository>(),
+        config: injector<Config>(),
+      ),
+    );
 
     // Note: OTPVerificationBloc is created directly in the page with email parameter
     // so it doesn't need to be registered in GetIt

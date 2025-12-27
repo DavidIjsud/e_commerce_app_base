@@ -33,13 +33,13 @@ class HomeHeader extends StatelessWidget {
         Image.asset(
           assets.homeTopImage,
           width: double.infinity,
-          height: 280,
+          // height: 280,
           fit: BoxFit.cover,
         ),
         // Gradient overlay
         Container(
           width: double.infinity,
-          height: 280,
+          // height: 280,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -136,7 +136,7 @@ class HomeHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 16),
                   // Main title
                   Text(
                     l10n.home_header_title,

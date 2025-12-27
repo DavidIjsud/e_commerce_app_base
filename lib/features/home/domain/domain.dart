@@ -1,2 +1,2 @@
-// Domain layer - to be implemented
-
+export 'entities/entities.dart';
+export 'repositories/repositories.dart';

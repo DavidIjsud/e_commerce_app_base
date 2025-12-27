@@ -3,12 +3,7 @@ import 'package:e_commerce_app_base/features/home/presentation/models/category.d
 import 'package:e_commerce_app_base/features/home/presentation/models/food_item.dart';
 
 /// Status enum for home
-enum HomeStatus {
-  initial,
-  loading,
-  loaded,
-  error,
-}
+enum HomeStatus { initial, loading, loaded, error }
 
 /// State for home page
 class HomeState extends Equatable {
@@ -38,9 +33,7 @@ class HomeState extends Equatable {
   Category? get selectedCategory {
     if (selectedCategoryId == null) return null;
     try {
-      return categories.firstWhere(
-        (cat) => cat.id == selectedCategoryId,
-      );
+      return categories.firstWhere((cat) => cat.id == selectedCategoryId);
     } catch (_) {
       return null;
     }
@@ -74,13 +67,12 @@ class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        categories,
-        selectedCategoryId,
-        selectedLocation,
-        availableLocations,
-        currentBottomNavTab,
-        errorMessage,
-      ];
+    status,
+    categories,
+    selectedCategoryId,
+    selectedLocation,
+    availableLocations,
+    currentBottomNavTab,
+    errorMessage,
+  ];
 }
-
