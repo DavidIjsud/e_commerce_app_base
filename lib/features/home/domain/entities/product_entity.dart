@@ -1,4 +1,5 @@
 import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/product_image_entity.dart';
 
 /// Entidad Product del dominio
 ///
@@ -11,7 +12,7 @@ class ProductEntity {
   final List<String> tags;
   final double discountPercentage;
   final String detailOfProduct;
-  final String image;
+  final List<ProductImageEntity> images;
   final bool isSuspended;
   final CategoryEntity category;
   final DateTime createdAt;
@@ -27,7 +28,7 @@ class ProductEntity {
     required this.tags,
     required this.discountPercentage,
     required this.detailOfProduct,
-    required this.image,
+    required this.images,
     required this.isSuspended,
     required this.category,
     required this.createdAt,
@@ -35,6 +36,12 @@ class ProductEntity {
     required this.description,
     required this.isFavorite,
   });
+
+  /// Obtiene la URL de la primera imagen, o una cadena vacía si no hay imágenes
+  String get firstImageUrl {
+    if (images.isEmpty) return '';
+    return images.first.url;
+  }
 
   /// Precio con descuento aplicado
   double get priceWithDiscount {

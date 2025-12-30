@@ -173,9 +173,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final rating = 4.5; // Hardcoded
     final distance = '150m'; // Hardcoded
     final isFavorite = product.isFavorite;
-    final imagePath = product.image.isNotEmpty
-        ? product.image
-        : assets.homeCategoryItemHamburger; // Fallback si no hay imagen
+    // Usar la primera imagen de la lista, o fallback si no hay imágenes
+    final imagePath = product.firstImageUrl.isNotEmpty
+        ? product.firstImageUrl
+        : assets.homeCategoryItemHamburger;
 
     // Formatear precio
     final formattedPrice = '\$ ${price.toStringAsFixed(2)}';

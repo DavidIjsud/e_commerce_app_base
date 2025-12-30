@@ -81,9 +81,7 @@ class FoodItemCard extends StatelessWidget {
                         item.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
-                        color: item.isFavorite
-                            ? Colors.red
-                            : colors.neutral60,
+                        color: item.isFavorite ? Colors.red : colors.neutral60,
                         size: 20,
                       ),
                     ),
@@ -111,11 +109,7 @@ class FoodItemCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 16,
-                      ),
+                      Icon(Icons.star, color: Colors.amber, size: 16),
                       const SizedBox(width: 4),
                       Text(
                         item.rating.toString(),
@@ -154,4 +148,3 @@ class FoodItemCard extends StatelessWidget {
     );
   }
 }
-
