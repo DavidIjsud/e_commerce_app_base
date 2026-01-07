@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
+import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.dart';
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -22,128 +26,140 @@ class FoodItemCard extends StatelessWidget {
     final colors = config.theme.themeColors;
     final typography = config.theme.typography;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image with favorite icon
-          Expanded(
-            flex: 3,
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(16),
-                  ),
-                  child: item.imagePath.startsWith('http')
-                      ? Image.network(
-                          item.imagePath,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            // Fallback si la imagen de red falla
-                            return Image.asset(
-                              item.imagePath,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            );
-                          },
-                        )
-                      : Image.asset(
-                          item.imagePath,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: GestureDetector(
-                    onTap: onFavoriteTap,
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        item.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: item.isFavorite ? Colors.red : colors.neutral60,
-                        size: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+    return GestureDetector(
+      onTap: () {
+        // Get ProductEntity from HomeBloc state
+        final homeState = context.read<HomeBloc>().state;
+        final product = homeState.productsById[item.id];
+        if (product != null) {
+          context.push(AppRouter.productDetail, extra: product);
+        }
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
-          ),
-          // Content
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Image with favorite icon
+            Expanded(
+              flex: 3,
+              child: Stack(
                 children: [
-                  Text(
-                    item.name,
-                    style: typography.bodyMediumBold.copyWith(
-                      color: colors.neutral100,
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    child: item.imagePath.startsWith('http')
+                        ? Image.network(
+                            item.imagePath,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              // Fallback si la imagen de red falla
+                              return Image.asset(
+                                item.imagePath,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          )
+                        : Image.asset(
+                            item.imagePath,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
                   ),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.amber, size: 16),
-                      const SizedBox(width: 4),
-                      Text(
-                        item.rating.toString(),
-                        style: typography.bodySmallRegular.copyWith(
-                          color: colors.neutral60,
+                  Positioned(
+                    top: 8,
+                    right: 8,
+                    child: GestureDetector(
+                      onTap: onFavoriteTap,
+                      child: Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          item.isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: item.isFavorite
+                              ? Colors.red
+                              : colors.neutral60,
+                          size: 20,
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      Icon(
-                        Icons.location_on,
-                        color: colors.neutral60,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        item.distance,
-                        style: typography.bodySmallRegular.copyWith(
-                          color: colors.neutral60,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Text(
-                    item.price,
-                    style: typography.bodyMediumBold.copyWith(
-                      color: colors.primaryHoverIris,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            // Content
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name,
+                      style: typography.bodyMediumBold.copyWith(
+                        color: colors.neutral100,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.amber, size: 16),
+                        const SizedBox(width: 4),
+                        Text(
+                          item.rating.toString(),
+                          style: typography.bodySmallRegular.copyWith(
+                            color: colors.neutral60,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Icon(
+                          Icons.location_on,
+                          color: colors.neutral60,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          item.distance,
+                          style: typography.bodySmallRegular.copyWith(
+                            color: colors.neutral60,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    Text(
+                      item.price,
+                      style: typography.bodyMediumBold.copyWith(
+                        color: colors.primaryHoverIris,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -34,6 +34,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       // Convertir productos a categorías con items
       final categories = _mapProductsToCategories(products);
 
+      // Crear mapa de productos por ID para acceso rápido
+      final productsById = {for (var product in products) product.id: product};
+
       // Seleccionar la primera categoría por defecto
       final firstCategoryId = categories.isNotEmpty
           ? categories.first.id
@@ -44,6 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           status: HomeStatus.loaded,
           categories: categories,
           selectedCategoryId: firstCategoryId,
+          productsById: productsById,
         ),
       );
     } on ServerException catch (e) {

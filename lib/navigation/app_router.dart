@@ -6,6 +6,9 @@ import 'package:e_commerce_app_base/features/recovery_password/presentation/page
 import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/otp_verification_page.dart';
 import 'package:e_commerce_app_base/features/recovery_password/presentation/pages/reset_password_page.dart';
 import 'package:e_commerce_app_base/features/home/presentation/pages/home_page.dart';
+import 'package:e_commerce_app_base/features/home/presentation/pages/product_detail_page.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
+import 'package:e_commerce_app_base/features/notifications/presentation/pages/notifications_page.dart';
 
 /// Application router configuration
 ///
@@ -19,6 +22,8 @@ class AppRouter {
   static const String otpVerification = '/otp-verification';
   static const String resetPassword = '/reset-password';
   static const String home = '/home';
+  static const String productDetail = '/product-detail';
+  static const String notifications = '/notifications';
 
   /// Create and configure the GoRouter instance
   static GoRouter createRouter() {
@@ -62,6 +67,23 @@ class AppRouter {
           path: home,
           name: 'home',
           builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: productDetail,
+          name: 'product-detail',
+          builder: (context, state) {
+            final product = state.extra as ProductEntity?;
+            if (product == null) {
+              // Fallback: redirect to home if no product provided
+              return const HomePage();
+            }
+            return ProductDetailPage(product: product);
+          },
+        ),
+        GoRoute(
+          path: notifications,
+          name: 'notifications',
+          builder: (context, state) => const NotificationsPage(),
         ),
       ],
     );

@@ -481,6 +481,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to login'**
   String get reset_password_success_back_to_login;
+
+  /// No description provided for @notification_page_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification_page_title;
+
+  /// No description provided for @notification_section_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get notification_section_today;
+
+  /// No description provided for @notification_section_yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get notification_section_yesterday;
 }
 
 class _AppLocalizationsDelegate

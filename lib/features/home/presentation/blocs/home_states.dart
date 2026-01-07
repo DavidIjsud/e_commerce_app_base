@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
 import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
 import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 
@@ -19,6 +20,7 @@ class HomeState extends Equatable {
     ],
     this.currentBottomNavTab = 0,
     this.errorMessage,
+    this.productsById = const {},
   });
 
   final HomeStatus status;
@@ -28,6 +30,7 @@ class HomeState extends Equatable {
   final List<String> availableLocations;
   final int currentBottomNavTab;
   final String? errorMessage;
+  final Map<String, ProductEntity> productsById;
 
   /// Get selected category
   CategoryViewModel? get selectedCategory {
@@ -53,6 +56,7 @@ class HomeState extends Equatable {
     List<String>? availableLocations,
     int? currentBottomNavTab,
     String? errorMessage,
+    Map<String, ProductEntity>? productsById,
   }) {
     return HomeState(
       status: status ?? this.status,
@@ -62,6 +66,7 @@ class HomeState extends Equatable {
       availableLocations: availableLocations ?? this.availableLocations,
       currentBottomNavTab: currentBottomNavTab ?? this.currentBottomNavTab,
       errorMessage: errorMessage,
+      productsById: productsById ?? this.productsById,
     );
   }
 
@@ -74,5 +79,6 @@ class HomeState extends Equatable {
     availableLocations,
     currentBottomNavTab,
     errorMessage,
+    productsById,
   ];
 }

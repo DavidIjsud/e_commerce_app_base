@@ -36,4 +36,12 @@ class PalmyraAssets {
   String get resetPasswordImages => '$images/reset_password';
   String get resetPasswordSuccessIllustration =>
       '$resetPasswordImages/success_illustration.png';
+
+  // Notification Icons
+  String get porcentRedIcon => '$svgs/porcent_red.svg';
+  String get profileBlackIcon => '$svgs/profile_black.svg';
+  String get successCheckedGreenIcon => '$svgs/success_checked_green_rounded.svg';
+  String get errorRoundedRedIcon => '$svgs/error_rounded_red.svg';
+  String get closedEmailIcon => '$svgs/closed_email.svg';
+  String get cardOrangeIcon => '$svgs/card_orange.svg';
 }

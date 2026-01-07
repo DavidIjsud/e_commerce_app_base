@@ -60,4 +60,18 @@ class EcommerceAssets extends PalmyraAssets {
   @override
   String get resetPasswordSuccessIllustration =>
       '$resetPasswordImages/success_illustration.png';
+
+  // Notification Icons
+  @override
+  String get porcentRedIcon => '$svgs/porcent_red.svg';
+  @override
+  String get profileBlackIcon => '$svgs/profile_black.svg';
+  @override
+  String get successCheckedGreenIcon => '$svgs/success_checked_green_rounded.svg';
+  @override
+  String get errorRoundedRedIcon => '$svgs/error_rounded_red.svg';
+  @override
+  String get closedEmailIcon => '$svgs/closed_email.svg';
+  @override
+  String get cardOrangeIcon => '$svgs/card_orange.svg';
 }

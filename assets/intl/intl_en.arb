@@ -79,5 +79,10 @@
   "reset_password_verify_button": "Verify Account",
   "reset_password_success_title": "Password Changed",
   "reset_password_success_message": "Password changed successfully, you can login again with a new password",
-  "reset_password_success_back_to_login": "Back to login"
+  "reset_password_success_back_to_login": "Back to login",
+
+  "@_NOTIFICATIONS": {},
+  "notification_page_title": "Notification",
+  "notification_section_today": "Today",
+  "notification_section_yesterday": "Yesterday"
 }

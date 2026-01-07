@@ -6,3 +6,5 @@ export 'category_card.dart';
 export 'food_item_card.dart';
 export 'food_item_skeleton.dart';
 export 'home_food_items_grid_skeleton.dart';
+export 'product_image_carousel.dart';
+export 'quantity_selector.dart';

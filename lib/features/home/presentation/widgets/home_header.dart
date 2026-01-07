@@ -1,8 +1,10 @@
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 import 'package:e_commerce_app_base/config/assets/ecommerce.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 /// Header widget for home page
 ///
@@ -125,7 +127,7 @@ class HomeHeader extends StatelessWidget {
                           ),
                           IconButton(
                             onPressed: () {
-                              // TODO: Navigate to notifications
+                              context.push(AppRouter.notifications);
                             },
                             icon: const Icon(
                               Icons.notifications_outlined,

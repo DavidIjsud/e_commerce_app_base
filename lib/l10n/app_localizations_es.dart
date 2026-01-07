@@ -214,4 +214,13 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get reset_password_success_back_to_login =>
       'Volver al inicio de sesión';
+
+  @override
+  String get notification_page_title => 'Notification';
+
+  @override
+  String get notification_section_today => 'Today';
+
+  @override
+  String get notification_section_yesterday => 'Yesterday';
 }
