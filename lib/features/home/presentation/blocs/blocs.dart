@@ -1,4 +1,9 @@
 export 'home_bloc.dart';
 export 'home_events.dart';
 export 'home_states.dart';
-
+export 'product_detail_bloc.dart';
+export 'product_detail_events.dart';
+export 'product_detail_states.dart';
+export 'search_bloc.dart';
+export 'search_events.dart';
+export 'search_states.dart';

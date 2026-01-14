@@ -84,5 +84,17 @@
   "@_NOTIFICATIONS": {},
   "notification_page_title": "Notification",
   "notification_section_today": "Today",
-  "notification_section_yesterday": "Yesterday"
+  "notification_section_yesterday": "Yesterday",
+
+  "@_SEARCH": {},
+  "search_page_title": "Find Your Favorite Food",
+  "search_placeholder": "Search for food...",
+  "search_no_results_title": "We couldn't find any result!",
+  "search_no_results_description": "Please check your search for any typos or spelling errors, or try a different search term.",
+  "search_filter_title": "Filters",
+  "search_filter_category_label": "Category",
+  "search_filter_price_label": "Price Range",
+  "search_filter_all_categories": "All Categories",
+  "search_filter_apply": "Apply Filters",
+  "search_filter_reset": "Reset"
 }

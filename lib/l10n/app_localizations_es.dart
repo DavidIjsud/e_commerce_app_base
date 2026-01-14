@@ -223,4 +223,35 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get notification_section_yesterday => 'Yesterday';
+
+  @override
+  String get search_page_title => 'Find Your Favorite Food';
+
+  @override
+  String get search_placeholder => 'Search for food...';
+
+  @override
+  String get search_no_results_title => 'We couldn\'t find any result!';
+
+  @override
+  String get search_no_results_description =>
+      'Please check your search for any typos or spelling errors, or try a different search term.';
+
+  @override
+  String get search_filter_title => 'Filters';
+
+  @override
+  String get search_filter_category_label => 'Category';
+
+  @override
+  String get search_filter_price_label => 'Price Range';
+
+  @override
+  String get search_filter_all_categories => 'All Categories';
+
+  @override
+  String get search_filter_apply => 'Apply Filters';
+
+  @override
+  String get search_filter_reset => 'Reset';
 }

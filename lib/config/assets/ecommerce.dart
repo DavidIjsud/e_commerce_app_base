@@ -74,4 +74,10 @@ class EcommerceAssets extends PalmyraAssets {
   String get closedEmailIcon => '$svgs/closed_email.svg';
   @override
   String get cardOrangeIcon => '$svgs/card_orange.svg';
+
+  // Search Images
+  @override
+  String get searchImages => '$images/search';
+  @override
+  String get searchEmptyImage => '$searchImages/search_image.png';
 }

@@ -8,3 +8,7 @@ export 'food_item_skeleton.dart';
 export 'home_food_items_grid_skeleton.dart';
 export 'product_image_carousel.dart';
 export 'quantity_selector.dart';
+export 'search_bar_widget.dart';
+export 'search_results_grid.dart';
+export 'empty_search_state.dart';
+export 'search_filter_bottom_sheet.dart';

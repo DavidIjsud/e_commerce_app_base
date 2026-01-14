@@ -121,7 +121,7 @@ class HomeHeader extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              // TODO: Navigate to search
+                              context.push(AppRouter.search);
                             },
                             icon: const Icon(Icons.search, color: Colors.white),
                           ),

@@ -82,6 +82,7 @@ flutter:
     - assets/ecommerce/images/home/category-items/hamburger/
     - assets/ecommerce/images/reset_password/
     - assets/ecommerce/svgs/
+    - assets/ecommerce/images/search/
     - assets/intl/
     - .env.development
     - .env.local

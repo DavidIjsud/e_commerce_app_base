@@ -9,6 +9,7 @@ import 'package:e_commerce_app_base/features/home/presentation/pages/home_page.d
 import 'package:e_commerce_app_base/features/home/presentation/pages/product_detail_page.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
 import 'package:e_commerce_app_base/features/notifications/presentation/pages/notifications_page.dart';
+import 'package:e_commerce_app_base/features/home/presentation/pages/search_page.dart';
 
 /// Application router configuration
 ///
@@ -24,6 +25,7 @@ class AppRouter {
   static const String home = '/home';
   static const String productDetail = '/product-detail';
   static const String notifications = '/notifications';
+  static const String search = '/search';
 
   /// Create and configure the GoRouter instance
   static GoRouter createRouter() {
@@ -84,6 +86,11 @@ class AppRouter {
           path: notifications,
           name: 'notifications',
           builder: (context, state) => const NotificationsPage(),
+        ),
+        GoRoute(
+          path: search,
+          name: 'search',
+          builder: (context, state) => const SearchPage(),
         ),
       ],
     );

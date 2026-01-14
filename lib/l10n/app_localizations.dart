@@ -499,6 +499,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yesterday'**
   String get notification_section_yesterday;
+
+  /// No description provided for @search_page_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Your Favorite Food'**
+  String get search_page_title;
+
+  /// No description provided for @search_placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for food...'**
+  String get search_placeholder;
+
+  /// No description provided for @search_no_results_title.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find any result!'**
+  String get search_no_results_title;
+
+  /// No description provided for @search_no_results_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your search for any typos or spelling errors, or try a different search term.'**
+  String get search_no_results_description;
+
+  /// No description provided for @search_filter_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get search_filter_title;
+
+  /// No description provided for @search_filter_category_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get search_filter_category_label;
+
+  /// No description provided for @search_filter_price_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get search_filter_price_label;
+
+  /// No description provided for @search_filter_all_categories.
+  ///
+  /// In en, this message translates to:
+  /// **'All Categories'**
+  String get search_filter_all_categories;
+
+  /// No description provided for @search_filter_apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
+  String get search_filter_apply;
+
+  /// No description provided for @search_filter_reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get search_filter_reset;
 }
 
 class _AppLocalizationsDelegate
