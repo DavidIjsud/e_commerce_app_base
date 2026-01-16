@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
+import 'package:e_commerce_app_base/config/assets/ecommerce.dart';
 
 /// Individual category card
 ///
@@ -10,10 +11,12 @@ class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
     required this.category,
+    required this.isSelected,
     required this.onTap,
   });
 
-  final CategoryViewModel category;
+  final CategoryEntity category;
+  final bool isSelected;
   final VoidCallback onTap;
 
   @override
@@ -21,6 +24,9 @@ class CategoryCard extends StatelessWidget {
     final config = Get.injector<Config>();
     final colors = config.theme.themeColors;
     final typography = config.theme.typography;
+    final assets = config.assets as EcommerceAssets;
+
+    final categoryIcon = _getCategoryIcon(category.name, assets);
 
     return GestureDetector(
       onTap: onTap,
@@ -28,7 +34,7 @@ class CategoryCard extends StatelessWidget {
         width: 90,
         margin: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
-          color: category.isSelected
+          color: isSelected
               ? colors.primaryHoverIris
               : Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -44,7 +50,7 @@ class CategoryCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              category.imagePath,
+              categoryIcon,
               width: 50,
               height: 50,
               fit: BoxFit.contain,
@@ -53,15 +59,33 @@ class CategoryCard extends StatelessWidget {
             Text(
               category.name,
               style: typography.bodySmallMedium.copyWith(
-                color: category.isSelected
+                color: isSelected
                     ? Colors.white
                     : colors.neutral100,
               ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
       ),
     );
   }
-}
 
+  /// Gets category icon based on category name
+  String _getCategoryIcon(String categoryName, EcommerceAssets assets) {
+    final name = categoryName.toLowerCase();
+    if (name.contains('bebida') || name.contains('drink')) {
+      return assets.homeCategoryDrink;
+    } else if (name.contains('hamburger') || name.contains('burger')) {
+      return assets.homeCategoryHamburger;
+    } else if (name.contains('taco')) {
+      return assets.homeCategoryTaco;
+    } else if (name.contains('pizza')) {
+      return assets.homeCategoryPizza;
+    }
+    // Fallback: use hamburger icon by default
+    return assets.homeCategoryHamburger;
+  }
+}

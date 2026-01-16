@@ -62,6 +62,7 @@ class HomeCategories extends StatelessWidget {
                   final category = state.categories[index];
                   return CategoryCard(
                     category: category,
+                    isSelected: state.isCategorySelected(category.id),
                     onTap: () {
                       context.read<HomeBloc>().add(
                         CategorySelected(category.id),

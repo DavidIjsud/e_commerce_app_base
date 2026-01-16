@@ -6,7 +6,7 @@ import 'package:e_commerce_app_base/features/home/presentation/blocs/product_det
 /// BLoC for managing product detail page state
 class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
   ProductDetailBloc({required ProductEntity product})
-      : super(ProductDetailState(product: product)) {
+    : super(ProductDetailState(product: product)) {
     on<ProductDetailInitialized>(_onInitialized);
     on<ProductDetailQuantityIncremented>(_onQuantityIncremented);
     on<ProductDetailQuantityDecremented>(_onQuantityDecremented);
@@ -59,6 +59,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       updatedAt: state.product.updatedAt,
       description: state.product.description,
       isFavorite: !state.product.isFavorite,
+      sellBy: state.product.sellBy,
+      unit: state.product.unit,
+      quantityRules: state.product.quantityRules,
     );
     emit(state.copyWith(product: updatedProduct));
   }
@@ -70,4 +73,3 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     emit(state.copyWith(currentImageIndex: event.pageIndex));
   }
 }
-

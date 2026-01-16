@@ -1,5 +1,6 @@
 import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/product_image_entity.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/quantity_rules_entity.dart';
 
 /// Entidad Product del dominio
 ///
@@ -19,6 +20,9 @@ class ProductEntity {
   final DateTime updatedAt;
   final String description;
   final bool isFavorite;
+  final String sellBy;
+  final String unit;
+  final QuantityRulesEntity? quantityRules;
 
   const ProductEntity({
     required this.id,
@@ -35,6 +39,9 @@ class ProductEntity {
     required this.updatedAt,
     required this.description,
     required this.isFavorite,
+    required this.sellBy,
+    required this.unit,
+    this.quantityRules,
   });
 
   /// Obtiene la URL de la primera imagen, o una cadena vacía si no hay imágenes

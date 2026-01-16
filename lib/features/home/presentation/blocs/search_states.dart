@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 
 enum SearchStatus { initial, searching, loaded, empty, error }
 
@@ -20,7 +19,7 @@ class SearchState extends Equatable {
 
   final SearchStatus status;
   final String searchQuery;
-  final List<FoodItemViewModel> searchResults;
+  final List<ProductEntity> searchResults;
   final List<ProductEntity> allProducts;
   final List<CategoryEntity> categories;
   final String? selectedCategoryId;
@@ -50,7 +49,7 @@ class SearchState extends Equatable {
   SearchState copyWith({
     SearchStatus? status,
     String? searchQuery,
-    List<FoodItemViewModel>? searchResults,
+    List<ProductEntity>? searchResults,
     List<ProductEntity>? allProducts,
     List<CategoryEntity>? categories,
     String? selectedCategoryId,

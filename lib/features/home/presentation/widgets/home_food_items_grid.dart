@@ -1,9 +1,11 @@
+import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_events.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_states.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/food_item_card.dart';
+import 'package:go_router/go_router.dart';
 
 /// Food items grid widget
 ///
@@ -15,9 +17,9 @@ class HomeFoodItemsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        final items = state.selectedCategoryItems;
+        final products = state.selectedCategoryProducts;
 
-        if (items.isEmpty) {
+        if (products.isEmpty) {
           return const SizedBox.shrink();
         }
 
@@ -32,15 +34,21 @@ class HomeFoodItemsGrid extends StatelessWidget {
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
             ),
-            itemCount: items.length,
+            itemCount: products.length,
             itemBuilder: (context, index) {
-              return FoodItemCard(
-                item: items[index],
-                onFavoriteTap: () {
-                  context.read<HomeBloc>().add(
-                        FoodItemFavoriteToggled(items[index].id),
-                      );
+              final product = products[index];
+              return GestureDetector(
+                onTap: () {
+                  context.push(AppRouter.productDetail, extra: product);
                 },
+                child: FoodItemCard(
+                  product: product,
+                  onFavoriteTap: () {
+                    context.read<HomeBloc>().add(
+                      FoodItemFavoriteToggled(product.id),
+                    );
+                  },
+                ),
               );
             },
           ),
@@ -49,4 +57,3 @@ class HomeFoodItemsGrid extends StatelessWidget {
     );
   }
 }
-

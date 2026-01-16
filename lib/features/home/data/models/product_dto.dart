@@ -1,5 +1,6 @@
 import 'package:e_commerce_app_base/features/home/data/models/category_dto.dart';
 import 'package:e_commerce_app_base/features/home/data/models/product_image_dto.dart';
+import 'package:e_commerce_app_base/features/home/data/models/quantity_rules_dto.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
 
 /// Data Transfer Object (DTO) para Product
@@ -19,6 +20,9 @@ class ProductDTO extends ProductEntity {
     required super.updatedAt,
     required super.description,
     required super.isFavorite,
+    required super.sellBy,
+    required super.unit,
+    super.quantityRules,
   });
 
   /// Crea un ProductDTO desde un JSON
@@ -28,6 +32,12 @@ class ProductDTO extends ProductEntity {
     final images = imagesJson
         .map((img) => ProductImageDTO.fromJson(img as Map<String, dynamic>))
         .toList();
+
+    // Parsear quantityRules
+    final quantityRulesJson = json['quantityRules'] as Map<String, dynamic>?;
+    final quantityRules = quantityRulesJson != null
+        ? QuantityRulesDTO.fromJson(quantityRulesJson)
+        : null;
 
     return ProductDTO(
       id: json['id'] as String,
@@ -47,6 +57,9 @@ class ProductDTO extends ProductEntity {
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       description: json['description'] as String? ?? '',
       isFavorite: json['isFavorite'] as bool? ?? false,
+      sellBy: json['sellBy'] as String? ?? 'UNIT',
+      unit: json['unit'] as String? ?? 'pc',
+      quantityRules: quantityRules,
     );
   }
 
@@ -67,6 +80,10 @@ class ProductDTO extends ProductEntity {
       'updatedAt': updatedAt.toIso8601String(),
       'description': description,
       'isFavorite': isFavorite,
+      'sellBy': sellBy,
+      'unit': unit,
+      if (quantityRules != null)
+        'quantityRules': (quantityRules as QuantityRulesDTO).toJson(),
     };
   }
 
@@ -87,6 +104,9 @@ class ProductDTO extends ProductEntity {
       updatedAt: updatedAt,
       description: description,
       isFavorite: isFavorite,
+      sellBy: sellBy,
+      unit: unit,
+      quantityRules: (quantityRules as QuantityRulesDTO?)?.toEntity(),
     );
   }
 }

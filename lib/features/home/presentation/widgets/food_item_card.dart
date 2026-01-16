@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
-import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.dart';
-import 'package:e_commerce_app_base/navigation/app_router.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -13,11 +9,11 @@ import 'package:e_commerce_app_base/config/config.dart';
 class FoodItemCard extends StatelessWidget {
   const FoodItemCard({
     super.key,
-    required this.item,
+    required this.product,
     required this.onFavoriteTap,
   });
 
-  final FoodItemViewModel item;
+  final ProductEntity product;
   final VoidCallback onFavoriteTap;
 
   @override
@@ -25,6 +21,9 @@ class FoodItemCard extends StatelessWidget {
     final config = Get.injector<Config>();
     final colors = config.theme.themeColors;
     final typography = config.theme.typography;
+
+    final imagePath = product.firstImageUrl;
+    final formattedPrice = '\$ ${product.priceWithDiscount.toStringAsFixed(2)}';
 
     return Container(
       decoration: BoxDecoration(
@@ -50,25 +49,38 @@ class FoodItemCard extends StatelessWidget {
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(16),
                   ),
-                  child: item.imagePath.startsWith('http')
+                  child: imagePath.startsWith('http')
                       ? Image.network(
-                          item.imagePath,
+                          imagePath,
                           width: double.infinity,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
-                            // Fallback si la imagen de red falla
-                            return Image.asset(
-                              item.imagePath,
+                            return Container(
                               width: double.infinity,
-                              fit: BoxFit.cover,
+                              color: colors.neutral20,
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: colors.neutral60,
+                                size: 48,
+                              ),
                             );
                           },
                         )
-                      : Image.asset(
-                          item.imagePath,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
+                      : imagePath.isNotEmpty
+                          ? Image.asset(
+                              imagePath,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              width: double.infinity,
+                              color: colors.neutral20,
+                              child: Icon(
+                                Icons.image_not_supported,
+                                color: colors.neutral60,
+                                size: 48,
+                              ),
+                            ),
                 ),
                 Positioned(
                   top: 8,
@@ -82,10 +94,10 @@ class FoodItemCard extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
-                        item.isFavorite
+                        product.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
-                        color: item.isFavorite ? Colors.red : colors.neutral60,
+                        color: product.isFavorite ? Colors.red : colors.neutral60,
                         size: 20,
                       ),
                     ),
@@ -103,7 +115,7 @@ class FoodItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    item.name,
+                    product.productName,
                     style: typography.bodyMediumBold.copyWith(
                       color: colors.neutral100,
                     ),
@@ -111,34 +123,38 @@ class FoodItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.amber, size: 16),
-                      const SizedBox(width: 4),
-                      Text(
-                        item.rating.toString(),
-                        style: typography.bodySmallRegular.copyWith(
-                          color: colors.neutral60,
+                  if (product.hasDiscount)
+                    Row(
+                      children: [
+                        Text(
+                          '\$ ${product.price.toStringAsFixed(2)}',
+                          style: typography.bodySmallRegular.copyWith(
+                            color: colors.neutral60,
+                            decoration: TextDecoration.lineThrough,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Icon(
-                        Icons.location_on,
-                        color: colors.neutral60,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        item.distance,
-                        style: typography.bodySmallRegular.copyWith(
-                          color: colors.neutral60,
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.red.shade50,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(
+                            '-${product.discountPercentage.toStringAsFixed(0)}%',
+                            style: typography.bodySmallRegular.copyWith(
+                              color: Colors.red,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                   const Spacer(),
                   Text(
-                    item.price,
+                    formattedPrice,
                     style: typography.bodyMediumBold.copyWith(
                       color: colors.primaryHoverIris,
                     ),

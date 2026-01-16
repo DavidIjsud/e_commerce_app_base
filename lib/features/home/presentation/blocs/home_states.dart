@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:e_commerce_app_base/features/home/domain/entities/product_entity.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/category_view_model.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
+import 'package:e_commerce_app_base/features/home/domain/entities/category_entity.dart';
 
 /// Status enum for home
 enum HomeStatus { initial, loading, loaded, error }
@@ -11,6 +10,7 @@ class HomeState extends Equatable {
   const HomeState({
     this.status = HomeStatus.initial,
     this.categories = const [],
+    this.productsByCategory = const {},
     this.selectedCategoryId,
     this.selectedLocation = 'Santa Cruz de la sierra',
     this.availableLocations = const [
@@ -24,7 +24,8 @@ class HomeState extends Equatable {
   });
 
   final HomeStatus status;
-  final List<CategoryViewModel> categories;
+  final List<CategoryEntity> categories;
+  final Map<String, List<ProductEntity>> productsByCategory;
   final String? selectedCategoryId;
   final String selectedLocation;
   final List<String> availableLocations;
@@ -33,7 +34,7 @@ class HomeState extends Equatable {
   final Map<String, ProductEntity> productsById;
 
   /// Get selected category
-  CategoryViewModel? get selectedCategory {
+  CategoryEntity? get selectedCategory {
     if (selectedCategoryId == null) return null;
     try {
       return categories.firstWhere((cat) => cat.id == selectedCategoryId);
@@ -42,15 +43,21 @@ class HomeState extends Equatable {
     }
   }
 
-  /// Get food items for selected category
-  List<FoodItemViewModel> get selectedCategoryItems {
-    final category = selectedCategory;
-    return category?.items ?? [];
+  /// Get products for selected category
+  List<ProductEntity> get selectedCategoryProducts {
+    if (selectedCategoryId == null) return [];
+    return productsByCategory[selectedCategoryId] ?? [];
+  }
+
+  /// Check if a category is selected
+  bool isCategorySelected(String categoryId) {
+    return selectedCategoryId == categoryId;
   }
 
   HomeState copyWith({
     HomeStatus? status,
-    List<CategoryViewModel>? categories,
+    List<CategoryEntity>? categories,
+    Map<String, List<ProductEntity>>? productsByCategory,
     String? selectedCategoryId,
     String? selectedLocation,
     List<String>? availableLocations,
@@ -61,6 +68,7 @@ class HomeState extends Equatable {
     return HomeState(
       status: status ?? this.status,
       categories: categories ?? this.categories,
+      productsByCategory: productsByCategory ?? this.productsByCategory,
       selectedCategoryId: selectedCategoryId ?? this.selectedCategoryId,
       selectedLocation: selectedLocation ?? this.selectedLocation,
       availableLocations: availableLocations ?? this.availableLocations,
@@ -74,6 +82,7 @@ class HomeState extends Equatable {
   List<Object?> get props => [
     status,
     categories,
+    productsByCategory,
     selectedCategoryId,
     selectedLocation,
     availableLocations,

@@ -6,7 +6,6 @@ import 'package:e_commerce_app_base/features/home/domain/entities/category_entit
 import 'package:e_commerce_app_base/features/home/domain/repositories/products_repository.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/search_events.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/search_states.dart';
-import 'package:e_commerce_app_base/features/home/presentation/models/food_item_view_model.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required this.productsRepository}) : super(const SearchState()) {
@@ -159,15 +158,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         filteredProducts = productsWithScores.map((e) => e.key).toList();
       }
 
-      // Convert to FoodItemViewModel
-      final results = filteredProducts
-          .map((product) => _mapProductToFoodItem(product))
-          .toList();
-
       emit(
         state.copyWith(
-          status: results.isEmpty ? SearchStatus.empty : SearchStatus.loaded,
-          searchResults: results,
+          status: filteredProducts.isEmpty ? SearchStatus.empty : SearchStatus.loaded,
+          searchResults: filteredProducts,
         ),
       );
     } catch (e) {
@@ -233,28 +227,5 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }
 
     return score;
-  }
-
-  FoodItemViewModel _mapProductToFoodItem(ProductEntity product) {
-    final name = product.productName;
-    final price = product.priceWithDiscount;
-    final rating = 4.5; // Hardcoded
-    final distance = '150m'; // Hardcoded
-    final isFavorite = product.isFavorite;
-
-    // Use first image or empty string (will fallback in widget)
-    final imagePath = product.firstImageUrl;
-
-    final formattedPrice = '\$ ${price.toStringAsFixed(2)}';
-
-    return FoodItemViewModel(
-      id: product.id,
-      name: name,
-      imagePath: imagePath,
-      rating: rating,
-      distance: distance,
-      price: formattedPrice,
-      isFavorite: isFavorite,
-    );
   }
 }
