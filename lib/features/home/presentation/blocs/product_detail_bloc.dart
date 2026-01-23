@@ -25,7 +25,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     ProductDetailQuantityIncremented event,
     Emitter<ProductDetailState> emit,
   ) {
-    final newQuantity = state.quantity + 1;
+    final stepQuantity = state.product.quantityRules?.stepQuantity ?? 1;
+    final newQuantity = state.quantity + stepQuantity;
     emit(state.copyWith(quantity: newQuantity));
   }
 
@@ -33,8 +34,10 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
     ProductDetailQuantityDecremented event,
     Emitter<ProductDetailState> emit,
   ) {
-    if (state.quantity > 1) {
-      final newQuantity = state.quantity - 1;
+    final stepQuantity = state.product.quantityRules?.stepQuantity ?? 1;
+    final minQuantity = state.product.quantityRules?.minQuantity ?? 1;
+    if (state.quantity > minQuantity) {
+      final newQuantity = state.quantity - stepQuantity;
       emit(state.copyWith(quantity: newQuantity));
     }
   }

@@ -11,11 +11,27 @@ class QuantitySelector extends StatelessWidget {
     required this.quantity,
     required this.onIncrement,
     required this.onDecrement,
+    this.unit,
   });
 
-  final int quantity;
+  final num quantity;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
+  final String? unit;
+
+  String get _formattedQuantity {
+    // Format quantity - remove decimal if it's a whole number
+    final isWholeNumber = quantity == quantity.toInt();
+    final quantityStr = isWholeNumber
+        ? quantity.toInt().toString()
+        : quantity.toStringAsFixed(1);
+
+    // Only show unit suffix for weight-based products (kg), not for units (pc)
+    if (unit != null && unit != 'pc') {
+      return '$quantityStr $unit';
+    }
+    return quantityStr;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +50,14 @@ class QuantitySelector extends StatelessWidget {
               color: colors.neutral20,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Icon(
-              Icons.remove,
-              color: Colors.black,
-            ),
+            child: const Icon(Icons.remove, color: Colors.black),
           ),
         ),
         const SizedBox(width: 16),
         // Quantity display
         Text(
-          quantity.toString(),
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          _formattedQuantity,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(width: 16),
         // Increment button
@@ -60,14 +70,10 @@ class QuantitySelector extends StatelessWidget {
               color: colors.primaryHoverIris,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
+            child: const Icon(Icons.add, color: Colors.white),
           ),
         ),
       ],
     );
   }
 }
-

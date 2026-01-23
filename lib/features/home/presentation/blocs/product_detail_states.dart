@@ -3,14 +3,14 @@ import 'package:e_commerce_app_base/features/home/domain/entities/product_entity
 
 /// State for product detail page
 class ProductDetailState extends Equatable {
-  const ProductDetailState({
+  ProductDetailState({
     required this.product,
-    this.quantity = 1,
+    num? quantity,
     this.currentImageIndex = 0,
-  });
+  }) : quantity = quantity ?? product.quantityRules?.minQuantity ?? 1;
 
   final ProductEntity product;
-  final int quantity;
+  final num quantity;
   final int currentImageIndex;
 
   /// Get total price (unit price * quantity)
@@ -29,7 +29,7 @@ class ProductDetailState extends Equatable {
     return '\$ $formatted';
   }
 
-  /// Get formatted unit price
+  /// Get formatted unit price with unit context (e.g., "$35/kg" or "$5/pc")
   String get formattedUnitPrice {
     final priceInt = product.priceWithDiscount.round();
     final priceStr = priceInt.toString();
@@ -37,12 +37,16 @@ class ProductDetailState extends Equatable {
       RegExp(r'(\d)(?=(\d{3})+(?!\d))'),
       (Match m) => '${m[1]},',
     );
-    return '\$ $formatted';
+    final unit = product.unit;
+    if (unit != 'pc') {
+      return '\$ $formatted/$unit';
+    }
+    return '\$ $formatted/unit';
   }
 
   ProductDetailState copyWith({
     ProductEntity? product,
-    int? quantity,
+    num? quantity,
     int? currentImageIndex,
   }) {
     return ProductDetailState(
@@ -55,4 +59,3 @@ class ProductDetailState extends Equatable {
   @override
   List<Object?> get props => [product, quantity, currentImageIndex];
 }
-

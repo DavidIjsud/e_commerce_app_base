@@ -14,18 +14,16 @@ import 'package:e_commerce_app_base/config/config.dart';
 ///
 /// Displays detailed information about a product including images, description, and quantity selector
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({
-    super.key,
-    required this.product,
-  });
+  const ProductDetailPage({super.key, required this.product});
 
   final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductDetailBloc(product: product)
-        ..add(const ProductDetailInitialized()),
+      create: (context) =>
+          ProductDetailBloc(product: product)
+            ..add(const ProductDetailInitialized()),
       child: const _ProductDetailView(),
     );
   }
@@ -74,9 +72,7 @@ class _ProductDetailView extends StatelessWidget {
                 centerTitle: true,
                 title: Text(
                   'About This Menu',
-                  style: typography.heading5Bold.copyWith(
-                    color: Colors.black,
-                  ),
+                  style: typography.heading5Bold.copyWith(color: Colors.black),
                 ),
                 actions: [
                   Container(
@@ -102,9 +98,9 @@ class _ProductDetailView extends StatelessWidget {
                             : colors.neutral60,
                       ),
                       onPressed: () {
-                        context
-                            .read<ProductDetailBloc>()
-                            .add(const ProductDetailFavoriteToggled());
+                        context.read<ProductDetailBloc>().add(
+                          const ProductDetailFavoriteToggled(),
+                        );
                       },
                     ),
                   ),
@@ -116,9 +112,9 @@ class _ProductDetailView extends StatelessWidget {
                   images: state.product.images,
                   currentIndex: state.currentImageIndex,
                   onPageChanged: (index) {
-                    context
-                        .read<ProductDetailBloc>()
-                        .add(ProductDetailImagePageChanged(index));
+                    context.read<ProductDetailBloc>().add(
+                      ProductDetailImagePageChanged(index),
+                    );
                   },
                 ),
               ),
@@ -201,15 +197,16 @@ class _ProductDetailView extends StatelessWidget {
                           children: [
                             QuantitySelector(
                               quantity: state.quantity,
+                              unit: state.product.unit,
                               onIncrement: () {
-                                context
-                                    .read<ProductDetailBloc>()
-                                    .add(const ProductDetailQuantityIncremented());
+                                context.read<ProductDetailBloc>().add(
+                                  const ProductDetailQuantityIncremented(),
+                                );
                               },
                               onDecrement: () {
-                                context
-                                    .read<ProductDetailBloc>()
-                                    .add(const ProductDetailQuantityDecremented());
+                                context.read<ProductDetailBloc>().add(
+                                  const ProductDetailQuantityDecremented(),
+                                );
                               },
                             ),
                             Text(
@@ -277,4 +274,3 @@ class _ProductDetailView extends StatelessWidget {
     );
   }
 }
-
