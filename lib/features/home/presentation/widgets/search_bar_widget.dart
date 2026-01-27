@@ -58,11 +58,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           // Leading search icon
           Padding(
             padding: const EdgeInsets.only(left: 16, right: 12),
-            child: Icon(
-              Icons.search,
-              color: colors.neutral60,
-              size: 24,
-            ),
+            child: Icon(Icons.search, color: colors.neutral60, size: 24),
           ),
 
           // Text field
@@ -75,11 +71,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 color: colors.neutral100,
               ),
               decoration: InputDecoration(
-                hintText: 'Ayam Jago',
+                hintText: 'Search products',
                 hintStyle: typography.bodyMediumRegular.copyWith(
                   color: colors.neutral40,
                 ),
                 border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
                 contentPadding: EdgeInsets.zero,
               ),
             ),
@@ -92,11 +90,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 _controller.clear();
                 widget.onQueryChanged('');
               },
-              icon: Icon(
-                Icons.close,
-                color: colors.neutral60,
-                size: 20,
-              ),
+              icon: Icon(Icons.close, color: colors.neutral60, size: 20),
             ),
 
           // Trailing filter icon
@@ -104,11 +98,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             padding: const EdgeInsets.only(left: 8, right: 16),
             child: IconButton(
               onPressed: widget.onFilterTap,
-              icon: Icon(
-                Icons.tune,
-                color: colors.neutral60,
-                size: 24,
-              ),
+              icon: Icon(Icons.tune, color: colors.neutral60, size: 24),
             ),
           ),
         ],

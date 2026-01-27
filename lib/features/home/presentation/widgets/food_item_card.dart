@@ -11,10 +11,39 @@ class FoodItemCard extends StatelessWidget {
     super.key,
     required this.product,
     required this.onFavoriteTap,
+    this.quantity = 0,
+    this.onAddToCart,
+    this.onIncrement,
+    this.onDecrement,
   });
 
   final ProductEntity product;
   final VoidCallback onFavoriteTap;
+  final num quantity;
+  final VoidCallback? onAddToCart;
+  final VoidCallback? onIncrement;
+  final VoidCallback? onDecrement;
+
+  String get _formattedPrice {
+    final price = product.priceWithDiscount.toStringAsFixed(2);
+    final unit = product.unit;
+    if (unit != 'pc') {
+      return '\$ $price/$unit';
+    }
+    return '\$ $price/unit';
+  }
+
+  String get _formattedQuantity {
+    final isWholeNumber = quantity == quantity.toInt();
+    final quantityStr = isWholeNumber
+        ? quantity.toInt().toString()
+        : quantity.toStringAsFixed(1);
+    final unit = product.unit;
+    if (unit != 'pc') {
+      return '$quantityStr $unit';
+    }
+    return quantityStr;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +52,6 @@ class FoodItemCard extends StatelessWidget {
     final typography = config.theme.typography;
 
     final imagePath = product.firstImageUrl;
-    final formattedPrice = '\$ ${product.priceWithDiscount.toStringAsFixed(2)}';
 
     return Container(
       decoration: BoxDecoration(
@@ -67,20 +95,20 @@ class FoodItemCard extends StatelessWidget {
                           },
                         )
                       : imagePath.isNotEmpty
-                          ? Image.asset(
-                              imagePath,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            )
-                          : Container(
-                              width: double.infinity,
-                              color: colors.neutral20,
-                              child: Icon(
-                                Icons.image_not_supported,
-                                color: colors.neutral60,
-                                size: 48,
-                              ),
-                            ),
+                      ? Image.asset(
+                          imagePath,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(
+                          width: double.infinity,
+                          color: colors.neutral20,
+                          child: Icon(
+                            Icons.image_not_supported,
+                            color: colors.neutral60,
+                            size: 48,
+                          ),
+                        ),
                 ),
                 Positioned(
                   top: 8,
@@ -97,7 +125,9 @@ class FoodItemCard extends StatelessWidget {
                         product.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
-                        color: product.isFavorite ? Colors.red : colors.neutral60,
+                        color: product.isFavorite
+                            ? Colors.red
+                            : colors.neutral60,
                         size: 20,
                       ),
                     ),
@@ -153,11 +183,87 @@ class FoodItemCard extends StatelessWidget {
                       ],
                     ),
                   const Spacer(),
-                  Text(
-                    formattedPrice,
-                    style: typography.bodyMediumBold.copyWith(
-                      color: colors.primaryHoverIris,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          _formattedPrice,
+                          style: typography.bodyMediumBold.copyWith(
+                            color: colors.primaryHoverIris,
+                          ),
+                        ),
+                      ),
+                      if (quantity == 0)
+                        GestureDetector(
+                          onTap: onAddToCart,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: colors.primaryHoverIris,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              'Add',
+                              style: typography.bodySmallBold.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                      else
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            GestureDetector(
+                              onTap: onDecrement,
+                              child: Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  color: colors.neutral20,
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: const Icon(
+                                  Icons.remove,
+                                  size: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              child: Text(
+                                _formattedQuantity,
+                                style: typography.bodySmallBold.copyWith(
+                                  color: colors.neutral100,
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: onIncrement,
+                              child: Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  color: colors.primaryHoverIris,
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: const Icon(
+                                  Icons.add,
+                                  size: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
                   ),
                 ],
               ),

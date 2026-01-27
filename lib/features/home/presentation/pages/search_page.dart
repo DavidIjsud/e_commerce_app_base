@@ -15,11 +15,15 @@ class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
 
   void _showFilterBottomSheet(BuildContext context) {
+    final searchBloc = context.read<SearchBloc>();
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => const SearchFilterBottomSheet(),
+      builder: (_) => BlocProvider.value(
+        value: searchBloc,
+        child: const SearchFilterBottomSheet(),
+      ),
     );
   }
 
