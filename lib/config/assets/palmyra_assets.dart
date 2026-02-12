@@ -45,6 +45,9 @@ class PalmyraAssets {
   String get closedEmailIcon => '$svgs/closed_email.svg';
   String get cardOrangeIcon => '$svgs/card_orange.svg';
 
+  // Cart Icons
+  String get porcentageOrangeIcon => '$svgs/porcentage-orange.svg';
+
   // Search Images
   String get searchImages => '$images/search';
   String get searchEmptyImage => '$searchImages/search_image.png';

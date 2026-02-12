@@ -14,6 +14,7 @@ import 'package:e_commerce_app_base/features/recovery_password/presentation/bloc
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.dart';
 import 'package:e_commerce_app_base/features/notifications/presentation/blocs/notifications_bloc.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/search_bloc.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:get_it/get_it.dart';
@@ -114,6 +115,9 @@ class Get {
     injector.registerFactory(
       () => SearchBloc(productsRepository: injector<ProductsRepository>()),
     );
+
+    // Register cart bloc as singleton (cart state persists across navigation)
+    injector.registerLazySingleton(() => CartBloc());
 
     // Note: OTPVerificationBloc is created directly in the page with email parameter
     // so it doesn't need to be registered in GetIt

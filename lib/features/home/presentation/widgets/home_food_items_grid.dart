@@ -5,6 +5,9 @@ import 'package:e_commerce_app_base/features/home/presentation/blocs/home_bloc.d
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_events.dart';
 import 'package:e_commerce_app_base/features/home/presentation/blocs/home_states.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/food_item_card.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_states.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_events.dart';
 import 'package:go_router/go_router.dart';
 
 /// Food items grid widget
@@ -16,42 +19,69 @@ class HomeFoodItemsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
-        final products = state.selectedCategoryProducts;
+      builder: (context, homeState) {
+        final products = homeState.selectedCategoryProducts;
 
         if (products.isEmpty) {
           return const SizedBox.shrink();
         }
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.75,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-            ),
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              final product = products[index];
-              return GestureDetector(
-                onTap: () {
-                  context.push(AppRouter.productDetail, extra: product);
-                },
-                child: FoodItemCard(
-                  product: product,
-                  onFavoriteTap: () {
-                    context.read<HomeBloc>().add(
-                      FoodItemFavoriteToggled(product.id),
-                    );
-                  },
+        return BlocBuilder<CartBloc, CartState>(
+          builder: (context, cartState) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
                 ),
-              );
-            },
-          ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  final quantity = cartState.getQuantityForProduct(product.id);
+
+                  return GestureDetector(
+                    onTap: () {
+                      context.push(AppRouter.productDetail, extra: product);
+                    },
+                    child: FoodItemCard(
+                      product: product,
+                      quantity: quantity,
+                      onFavoriteTap: () {
+                        context.read<HomeBloc>().add(
+                          FoodItemFavoriteToggled(product.id),
+                        );
+                      },
+                      onAddToCart: () {
+                        final initialQuantity =
+                            product.quantityRules?.minQuantity ?? 1;
+                        context.read<CartBloc>().add(
+                          CartItemAdded(
+                            product: product,
+                            quantity: initialQuantity,
+                          ),
+                        );
+                      },
+                      onIncrement: () {
+                        context.read<CartBloc>().add(
+                          CartItemQuantityIncremented(product.id),
+                        );
+                      },
+                      onDecrement: () {
+                        context.read<CartBloc>().add(
+                          CartItemQuantityDecremented(product.id),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         );
       },
     );

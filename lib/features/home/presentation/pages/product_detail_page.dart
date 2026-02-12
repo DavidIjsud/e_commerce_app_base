@@ -7,6 +7,8 @@ import 'package:e_commerce_app_base/features/home/presentation/blocs/product_det
 import 'package:e_commerce_app_base/features/home/presentation/blocs/product_detail_states.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/product_image_carousel.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/quantity_selector.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
+import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_events.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -244,7 +246,19 @@ class _ProductDetailView extends StatelessWidget {
           builder: (context, state) {
             return ElevatedButton(
               onPressed: () {
-                // Do nothing for now as requested
+                context.read<CartBloc>().add(
+                      CartItemAdded(
+                        product: state.product,
+                        quantity: state.quantity,
+                      ),
+                    );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${state.product.productName} added to cart'),
+                    duration: const Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.primaryHoverIris,
