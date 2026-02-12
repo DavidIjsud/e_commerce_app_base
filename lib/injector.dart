@@ -16,6 +16,7 @@ import 'package:e_commerce_app_base/features/notifications/presentation/blocs/no
 import 'package:e_commerce_app_base/features/home/presentation/blocs/search_bloc.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:e_commerce_app_base/features/chat/presentation/blocs/chat_bloc.dart';
+import 'package:e_commerce_app_base/features/profile/presentation/blocs/profile_bloc.dart';
 import 'package:e_commerce_app_base/navigation/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:get_it/get_it.dart';
@@ -122,6 +123,9 @@ class Get {
 
     // Register chat bloc as singleton (chat state persists across navigation)
     injector.registerLazySingleton(() => ChatBloc());
+
+    // Register profile bloc as singleton (profile state persists across navigation)
+    injector.registerLazySingleton(() => ProfileBloc());
 
     // Note: OTPVerificationBloc is created directly in the page with email parameter
     // so it doesn't need to be registered in GetIt

@@ -10,8 +10,8 @@ import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_bottom_navigation.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/pages/cart_page.dart';
 import 'package:e_commerce_app_base/features/chat/presentation/pages/chat_page.dart';
+import 'package:e_commerce_app_base/features/profile/presentation/pages/profile_page.dart';
 import 'package:e_commerce_app_base/injector.dart';
-import 'package:e_commerce_app_base/config/config.dart';
 
 /// Main home page
 ///
@@ -40,11 +40,7 @@ class HomePage extends StatelessWidget {
               case 2:
                 return const ChatPageContent();
               case 3:
-                return _buildPlaceholderContent(
-                  context,
-                  'Profile',
-                  Icons.person_outline,
-                );
+                return const ProfilePageContent();
               default:
                 return _buildHomeContent(context, state);
             }
@@ -117,36 +113,4 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildPlaceholderContent(
-    BuildContext context,
-    String title,
-    IconData icon,
-  ) {
-    final config = Get.injector<Config>();
-    final colors = config.theme.themeColors;
-    final typography = config.theme.typography;
-
-    return SafeArea(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 80, color: colors.neutral40),
-            const SizedBox(height: 16),
-            Text(
-              title,
-              style: typography.heading5Bold.copyWith(color: colors.neutral60),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Coming Soon',
-              style: typography.bodyMediumRegular.copyWith(
-                color: colors.neutral40,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

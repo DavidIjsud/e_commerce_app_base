@@ -7,6 +7,7 @@ import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:e_commerce_app_base/features/chat/presentation/blocs/chat_bloc.dart';
+import 'package:e_commerce_app_base/features/profile/presentation/blocs/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<CartBloc>.value(value: Get.injector<CartBloc>()),
         BlocProvider<ChatBloc>.value(value: Get.injector<ChatBloc>()),
+        BlocProvider<ProfileBloc>.value(value: Get.injector<ProfileBloc>()),
       ],
       child: MaterialApp.router(
         title: 'E-Commerce App',
