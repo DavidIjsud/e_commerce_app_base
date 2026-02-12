@@ -9,6 +9,7 @@ import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food_items_grid_skeleton.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_bottom_navigation.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/pages/cart_page.dart';
+import 'package:e_commerce_app_base/features/chat/presentation/pages/chat_page.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/config/config.dart';
 
@@ -37,9 +38,13 @@ class HomePage extends StatelessWidget {
               case 1:
                 return const CartPageContent();
               case 2:
-                return _buildPlaceholderContent(context, 'Chat', Icons.chat_bubble_outline);
+                return const ChatPageContent();
               case 3:
-                return _buildPlaceholderContent(context, 'Profile', Icons.person_outline);
+                return _buildPlaceholderContent(
+                  context,
+                  'Profile',
+                  Icons.person_outline,
+                );
               default:
                 return _buildHomeContent(context, state);
             }
@@ -81,9 +86,7 @@ class HomePage extends StatelessWidget {
     }
 
     if (state.status == HomeStatus.error) {
-      return Center(
-        child: Text(state.errorMessage ?? 'Error loading home'),
-      );
+      return Center(child: Text(state.errorMessage ?? 'Error loading home'));
     }
 
     return Column(
@@ -128,17 +131,11 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 80,
-              color: colors.neutral40,
-            ),
+            Icon(icon, size: 80, color: colors.neutral40),
             const SizedBox(height: 16),
             Text(
               title,
-              style: typography.heading5Bold.copyWith(
-                color: colors.neutral60,
-              ),
+              style: typography.heading5Bold.copyWith(color: colors.neutral60),
             ),
             const SizedBox(height: 8),
             Text(

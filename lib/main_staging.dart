@@ -6,6 +6,7 @@ import 'package:e_commerce_app_base/flavor_config.dart';
 import 'package:e_commerce_app_base/injector.dart';
 import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/blocs/cart_bloc.dart';
+import 'package:e_commerce_app_base/features/chat/presentation/blocs/chat_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -35,8 +36,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = Get.injector<GoRouter>();
 
-    return BlocProvider<CartBloc>.value(
-      value: Get.injector<CartBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CartBloc>.value(value: Get.injector<CartBloc>()),
+        BlocProvider<ChatBloc>.value(value: Get.injector<ChatBloc>()),
+      ],
       child: MaterialApp.router(
         title: 'E-Commerce App',
         theme: config.theme.light(),
