@@ -180,7 +180,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get home_bottom_nav_home => 'Inicio';
 
   @override
-  String get home_bottom_nav_shopping => 'Compras';
+  String get home_bottom_nav_shopping => 'Carrito';
 
   @override
   String get home_bottom_nav_chat => 'Chat';

@@ -178,7 +178,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home_bottom_nav_home => 'Home';
 
   @override
-  String get home_bottom_nav_shopping => 'Shopping';
+  String get home_bottom_nav_shopping => 'Cart';
 
   @override
   String get home_bottom_nav_chat => 'Chat';

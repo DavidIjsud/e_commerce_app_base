@@ -9,8 +9,8 @@ import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_food_items_grid_skeleton.dart';
 import 'package:e_commerce_app_base/features/home/presentation/widgets/home_bottom_navigation.dart';
 import 'package:e_commerce_app_base/features/cart/presentation/pages/cart_page.dart';
-import 'package:e_commerce_app_base/features/chat/presentation/pages/chat_page.dart';
 import 'package:e_commerce_app_base/features/profile/presentation/pages/profile_page.dart';
+import 'package:e_commerce_app_base/features/orders/presentation/pages/orders_page.dart';
 import 'package:e_commerce_app_base/injector.dart';
 
 /// Main home page
@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
               case 1:
                 return const CartPageContent();
               case 2:
-                return const ChatPageContent();
+                return const OrdersPageContent();
               case 3:
                 return const ProfilePageContent();
               default:

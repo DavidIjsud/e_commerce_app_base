@@ -419,7 +419,7 @@ abstract class AppLocalizations {
   /// No description provided for @home_bottom_nav_shopping.
   ///
   /// In en, this message translates to:
-  /// **'Shopping'**
+  /// **'Cart'**
   String get home_bottom_nav_shopping;
 
   /// No description provided for @home_bottom_nav_chat.

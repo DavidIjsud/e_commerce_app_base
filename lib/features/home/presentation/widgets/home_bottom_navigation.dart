@@ -9,7 +9,7 @@ import 'package:e_commerce_app_base/l10n/app_localizations.dart';
 
 /// Bottom navigation bar widget
 ///
-/// Displays 4 tabs: Home, Shopping Bag, Chat, Profile
+/// Displays 4 tabs: Home, Shopping Bag, Orders, Profile
 class HomeBottomNavigation extends StatelessWidget {
   const HomeBottomNavigation({super.key});
 
@@ -54,9 +54,9 @@ class HomeBottomNavigation extends StatelessWidget {
                 icon: const Icon(Icons.shopping_bag_outlined),
                 label: l10n.home_bottom_nav_shopping,
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.chat_bubble_outline),
-                label: l10n.home_bottom_nav_chat,
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.receipt_long_outlined),
+                label: 'Orders',
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.person_outline),
